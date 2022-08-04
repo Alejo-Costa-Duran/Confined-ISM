@@ -1,0 +1,83 @@
+The system is: Windows - 10.0.22000 - AMD64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.32.31326/bin/Hostx86/x86/cl.exe 
+Build flags: 
+Id flags:  
+
+The output was:
+0
+Compilador de optimización de C/C++ de Microsoft (R) versión 19.32.31329 para x86
+(C) Microsoft Corporation. Todos los derechos reservados.
+
+CMakeCCompilerId.c
+Microsoft (R) Incremental Linker Version 14.32.31329.0
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+/out:CMakeCCompilerId.exe 
+CMakeCCompilerId.obj 
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.exe"
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.obj"
+
+The C compiler identification is MSVC, found in "E:/ProjectsC++/SwirlBirds/build/CMakeFiles/3.23.2/CompilerIdC/CMakeCCompilerId.exe"
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler: C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.32.31326/bin/Hostx86/x86/cl.exe 
+Build flags: 
+Id flags:  
+
+The output was:
+0
+Compilador de optimización de C/C++ de Microsoft (R) versión 19.32.31329 para x86
+(C) Microsoft Corporation. Todos los derechos reservados.
+
+CMakeCXXCompilerId.cpp
+Microsoft (R) Incremental Linker Version 14.32.31329.0
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+/out:CMakeCXXCompilerId.exe 
+CMakeCXXCompilerId.obj 
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CMakeCXXCompilerId.exe"
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CMakeCXXCompilerId.obj"
+
+The CXX compiler identification is MSVC, found in "E:/ProjectsC++/SwirlBirds/build/CMakeFiles/3.23.2/CompilerIdCXX/CMakeCXXCompilerId.exe"
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: E:/ProjectsC++/SwirlBirds/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/MinGW/bin/mingw32-make.exe -f Makefile cmTC_35b99/fast && C:/MinGW/bin/mingw32-make.exe  -f CMakeFiles\cmTC_35b99.dir\build.make CMakeFiles/cmTC_35b99.dir/build
+mingw32-make[1]: Entering directory 'E:/ProjectsC++/SwirlBirds/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_35b99.dir/CMakeCCompilerABI.c.obj
+"C:\Program Files\CMake\bin\cmake.exe" -E cmake_cl_compile_depends --dep-file=CMakeFiles\cmTC_35b99.dir\CMakeCCompilerABI.c.obj.d --working-dir=E:\ProjectsC++\SwirlBirds\build\CMakeFiles\CMakeTmp --filter-prefix="Nota: inclusi├│n del archivo: " -- C:\PROGRA~1\MICROS~2\2022\COMMUN~1\VC\Tools\MSVC\1432~1.313\bin\Hostx86\x86\cl.exe  /nologo   /DWIN32 /D_WINDOWS /W3  /MDd /Zi /Ob0 /Od /RTC1 /showIncludes /FoCMakeFiles\cmTC_35b99.dir\CMakeCCompilerABI.c.obj /FdCMakeFiles\cmTC_35b99.dir/ /FS -c "C:\Program Files\CMake\share\cmake-3.23\Modules\CMakeCCompilerABI.c"
+CMakeCCompilerABI.c
+Nota: inclusi├│n del archivo: C:\Program Files\CMake\share\cmake-3.23\Modules\CMakeCompilerABI.h
+Linking C executable cmTC_35b99.exe
+"C:\Program Files\CMake\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTC_35b99.dir\link.txt --verbose=1
+"C:\Program Files\CMake\bin\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\cmTC_35b99.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100190~1.0\x86\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100190~1.0\x86\mt.exe --manifests -- C:\PROGRA~1\MICROS~2\2022\COMMUN~1\VC\Tools\MSVC\1432~1.313\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_35b99.dir\objects1.rsp  /out:cmTC_35b99.exe /implib:cmTC_35b99.lib /pdb:E:\ProjectsC++\SwirlBirds\build\CMakeFiles\CMakeTmp\cmTC_35b99.pdb /version:0.0 /machine:X86  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib 
+C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -noprofile -executionpolicy Bypass -file C:/dev/vcpkg/vcpkg/scripts/buildsystems/msbuild/applocal.ps1 -targetBinary E:/ProjectsC++/SwirlBirds/build/CMakeFiles/CMakeTmp/cmTC_35b99.exe -installedDir C:/dev/vcpkg/vcpkg/installed/x86-windows/debug/bin -OutVariable out
+mingw32-make[1]: Leaving directory 'E:/ProjectsC++/SwirlBirds/build/CMakeFiles/CMakeTmp'
+
+
+
+Detecting CXX compiler ABI info compiled with the following output:
+Change Dir: E:/ProjectsC++/SwirlBirds/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/MinGW/bin/mingw32-make.exe -f Makefile cmTC_24966/fast && C:/MinGW/bin/mingw32-make.exe  -f CMakeFiles\cmTC_24966.dir\build.make CMakeFiles/cmTC_24966.dir/build
+mingw32-make[1]: Entering directory 'E:/ProjectsC++/SwirlBirds/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_24966.dir/CMakeCXXCompilerABI.cpp.obj
+"C:\Program Files\CMake\bin\cmake.exe" -E cmake_cl_compile_depends --dep-file=CMakeFiles\cmTC_24966.dir\CMakeCXXCompilerABI.cpp.obj.d --working-dir=E:\ProjectsC++\SwirlBirds\build\CMakeFiles\CMakeTmp --filter-prefix="Nota: inclusi├│n del archivo: " -- C:\PROGRA~1\MICROS~2\2022\COMMUN~1\VC\Tools\MSVC\1432~1.313\bin\Hostx86\x86\cl.exe  /nologo /TP   /DWIN32 /D_WINDOWS /W3 /GR /EHsc  /MDd /Zi /Ob0 /Od /RTC1 /showIncludes /FoCMakeFiles\cmTC_24966.dir\CMakeCXXCompilerABI.cpp.obj /FdCMakeFiles\cmTC_24966.dir/ /FS -c "C:\Program Files\CMake\share\cmake-3.23\Modules\CMakeCXXCompilerABI.cpp"
+CMakeCXXCompilerABI.cpp
+Nota: inclusi├│n del archivo: C:\Program Files\CMake\share\cmake-3.23\Modules\CMakeCompilerABI.h
+Linking CXX executable cmTC_24966.exe
+"C:\Program Files\CMake\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTC_24966.dir\link.txt --verbose=1
+"C:\Program Files\CMake\bin\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\cmTC_24966.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100190~1.0\x86\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100190~1.0\x86\mt.exe --manifests -- C:\PROGRA~1\MICROS~2\2022\COMMUN~1\VC\Tools\MSVC\1432~1.313\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_24966.dir\objects1.rsp  /out:cmTC_24966.exe /implib:cmTC_24966.lib /pdb:E:\ProjectsC++\SwirlBirds\build\CMakeFiles\CMakeTmp\cmTC_24966.pdb /version:0.0 /machine:X86  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib 
+C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -noprofile -executionpolicy Bypass -file C:/dev/vcpkg/vcpkg/scripts/buildsystems/msbuild/applocal.ps1 -targetBinary E:/ProjectsC++/SwirlBirds/build/CMakeFiles/CMakeTmp/cmTC_24966.exe -installedDir C:/dev/vcpkg/vcpkg/installed/x86-windows/debug/bin -OutVariable out
+mingw32-make[1]: Leaving directory 'E:/ProjectsC++/SwirlBirds/build/CMakeFiles/CMakeTmp'
+
+
+
