@@ -262,6 +262,9 @@ FLAC_LIB:FILEPATH=C:/SFML-2.5.1/lib/flac.lib
 //Path to a library.
 FreeType_LIB:FILEPATH=C:/SFML-2.5.1/lib/freetype.lib
 
+//Path to a program.
+GITCOMMAND:FILEPATH=C:/Program Files/Git/cmd/git.exe
+
 //Command to build the project
 MAKECOMMAND:STRING=C:/Program\ Files/CMake/bin/cmake.exe --build . --config "${CTEST_CONFIGURATION_TYPE}" -- -i
 
@@ -531,6 +534,8 @@ DART_TESTING_TIMEOUT-ADVANCED:INTERNAL=1
 FLAC_LIB-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: FreeType_LIB
 FreeType_LIB-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: GITCOMMAND
+GITCOMMAND-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: MAKECOMMAND
 MAKECOMMAND-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: MEMORYCHECK_COMMAND

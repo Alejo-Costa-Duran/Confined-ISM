@@ -26,14 +26,14 @@ void Manager::Run(float fric)
 	double maxs = 1;
 	double inert = 5.;
 	double coupling = 1.0;
-	flock = Flock(0,10.0,time, maxs, inert, 0.000, 0.0, coupling, 1.0);
+	flock = Flock(0,15.0,time, maxs, inert, 0.0001, 0.00001, coupling, 1.0);
 	int c = 0;
 	for (int i = 1; i < 10 + 1; i++)
 		for (int j = 0; j < i * 20; j++)
 		{
 			//double theta = 2*Pi* static_cast <double> (rand()) / static_cast <double> (RAND_MAX);;
 			double theta = 2.0 * Pi * (j / (20.0 * i));
-			double radius = 0.8 * i + 2.0;
+			double radius = 0.9 * i + 2.0;
 			Pvector pos(radius * cos(theta), radius * sin(theta));
 			Pvector vel(-maxs * sin(theta), maxs * cos(theta));
 			Pvector acc(-maxs * maxs * cos(theta) / radius, -maxs * maxs * sin(theta) / radius);
@@ -54,7 +54,7 @@ void Manager::Run(float fric)
 	fpsText.setFillColor(sf::Color::White);
 	fpsText.setCharacterSize(12);
 	fpsText.setPosition(_window_width - 162, 0);
-	_window.setFramerateLimit(1);
+	_window.setFramerateLimit(60);
 	// Clock added to calculate frame rate, may cause a small amount of slowdown?
 	sf::Clock clock;
 	//clock.restart();
@@ -76,14 +76,14 @@ void Manager::Run(float fric)
 //Method of passing text needs refactoring
 void Manager::Render(sf::Text fpsText, double fps, double time)
 {
-	double lengthX = 10.0;
-	double lengthY = 10.0;
+	double lengthX = 15.0;
+	double lengthY = 15.0;
 	_window.clear();
 	//fpsText.setString("Frames per Second: " + to_string(int(1.0/time + 0.5)));
 	_window.draw(fpsText);
 	sf::CircleShape circ;
-	float r = _window_height/20.0;
-	circ.setRadius(_window_height/20.0);
+	float r = _window_height/30.0;
+	circ.setRadius(_window_height/30.0);
 	circ.setOrigin(0, 0);
 	circ.setOutlineThickness(1.0);
 	circ.setFillColor(sf::Color(0,0,0,0));
@@ -92,7 +92,6 @@ void Manager::Render(sf::Text fpsText, double fps, double time)
 	// Draws all of the Boids out, and applies functions that are needed to update.
 
 	flock.updateFlock(time);
-	flock.boundary();
 	for (unsigned int i = 0; i < shapes.size(); i++) {
 		//Pvector vel = flock.bandada[i].velocity;
 		//Pvector pos = flock.bandada[i].position;
@@ -151,8 +150,8 @@ void Manager::HandleInput()
 void Manager::createBoid(int idx, Pvector pos, Pvector vel, Pvector acc, double inertia, double maxs, sf::Color fillColor, sf::Color outlineColor)
 {
 	int size = 1;
-	Bird b(idx, pos, vel, acc, inertia, maxs,10.0);
-	float lengthX = 30, lengthY = 30;
+	Bird b(idx, pos, vel, acc, inertia, maxs,15.0);
+	float lengthX = 15, lengthY = 15;
 	sf::CircleShape shape(size, 3);
 	shape.setPosition(b.polarToScreen(_window_width, _window_height, lengthX, lengthY).x, b.polarToScreen(_window_width, _window_height, lengthX, lengthY).y);
 	shape.setFillColor(fillColor);

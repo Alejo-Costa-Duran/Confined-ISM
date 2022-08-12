@@ -6,6 +6,7 @@
 #include <random>
 #include <gsl/gsl_rng.h>
 #include <gsl/gsl_randist.h>
+#include <iomanip>
 
 
 
@@ -28,6 +29,111 @@ Flock::Flock(unsigned long int seed,double boxSize,double dt, double maxSp, doub
     gsl_rng_set(m_mt, seed);
     this->boxSize = boxSize;
 }
+
+void Flock::writeRng(char *c)
+{
+    FILE *rngFile;
+    rngFile = fopen(c,"wb");
+    int a = gsl_rng_fwrite(rngFile,m_mt);
+    fclose(rngFile);
+    std::cout<<a<<"\n";
+}
+
+void Flock::setVars(std::vector<double> vars)
+{
+    inertia = vars[0];
+    seed = vars[1];
+    friction = vars[2];
+    temperature = vars[3];
+    coupling = vars[4];
+    numNeigh = vars[5];
+    boxSize = vars[6];
+    maxSpeed = vars[7];
+    cells = boxSize*2/floor(2*boxSize);
+    setConstants(vars[8]);
+}
+
+void Flock::loadRng(char *c)
+{
+    FILE *pFile;
+    pFile = fopen(c,"rb");
+    gsl_rng_fread(pFile,m_mt);
+    fclose(pFile);
+}
+
+void Flock::saveFile(char *c,std::string envs, std::string birds,double dt)
+{
+    writeRng(c);
+
+    ofstream variables(envs);
+    cout.precision(17);
+    variables << std::fixed<< inertia <<","<<seed<<","<<friction<<","<<temperature <<","<<coupling<<","<<numNeigh<<","<<boxSize<<","<<maxSpeed<<","<<dt;
+    variables.close();
+
+    ofstream data(birds);
+    for(int idx = 0; idx<bandada.size();idx++)
+    {
+        Bird b = bandada[idx];
+        data<<std::setprecision(18) << b.idx <<","<< b.position.x<<","<<b.position.y<<","<<b.velocity.x<<","<<b.velocity.y<<","<<b.acc.x<<","<<b.acc.y<<
+        ","<<b.lambda<<","<<b.mu<<","<<b.deltaV.x<<","<<b.deltaV.y<<","<<
+        b.force.x<<","<<b.force.y<<","<<b.randA.x<<","<<b.randA.y<<","<<b.randV.x<<","<<b.randV.y<<"\n";
+    }
+    data.close();
+}
+
+void Flock::addBird(std::vector<double> data)
+{
+    Pvector position(data[1],data[2]);
+    Pvector velocity(data[3],data[4]);
+    Pvector acc(data[5],data[6]);
+    Pvector deltaV(data[9],data[10]);
+    Pvector Force(data[11],data[12]);
+    Pvector randA(data[13],data[14]);
+    Pvector randV(data[15],data[16]);
+    bandada.push_back(Bird(data[0], position,velocity, acc, inertia,maxSpeed, boxSize));
+    bandada[data[0]].lambda = data[7];
+    bandada[data[0]].mu = data[8];
+    bandada[data[0]].force = Force;
+    bandada[data[0]].deltaV = deltaV;
+    bandada[data[0]].randA = randA;
+    bandada[data[0]].randV = randV;
+}
+
+void Flock::loadFile(char *c,std::string envs, std::string birds)
+{
+    loadRng(c);
+
+    ifstream variables(envs);
+    std::string dat;
+    std::getline(variables,dat);
+    std::stringstream ss(dat);
+    std::vector<double> v;
+    double dtemp;
+    while(ss >> dtemp)
+	{
+		std::string stemp {};
+		v.push_back(dtemp);
+		std::getline(ss,stemp,',');
+	}
+    variables.close();
+    setVars(v);
+
+    ifstream flocks(birds);
+    while(std::getline(flocks,dat))
+    {
+    std::vector<double> v;
+    std::stringstream ss(dat);
+    while(ss>>dtemp)
+        {
+            std::string stemp {};
+            v.push_back(dtemp);
+            std::getline(ss,stemp,',');
+        }
+        addBird(v);
+    }
+    flocks.close();
+}
+
 
 
 void Flock::randVecs(Bird& b)
@@ -236,51 +342,30 @@ std::vector<double> Flock::measurements()
     for (Bird b : bandada) { centerMass.x += b.position.x; centerMass.y += b.position.y; }
     centerMass.x = centerMass.x / N;
     centerMass.y = centerMass.y / N;
-    double spin = 0, energy = 0, tangSpeed = 0, avgVec = 0;
+    double spin = 0, spinSq=0, energy = 0, energySq=0, tangSpeed = 0, tangSpeedSq = 0;
+    double vecX=0, vecSqX=0, vecY=0, vecSqY=0;
     for (int idx=0; idx<N;idx++)
     {
         Bird pajaro = bandada[idx];
-        spins.push_back(pajaro.getSpin(inertia, maxSpeed));
-        spin += spins[idx];
+        double s = pajaro.getSpin(inertia,maxSpeed);
+        spin += s;
+        spinSq += s*s;
+        double vx = pajaro.velocity.x, vy = pajaro.velocity.y;
+        vecX += vx;
+        vecY += vy;
+        vecSqX += vx*vx;
+        vecSqY += vy*vy;
         Pvector dist(centerMass.x - pajaro.position.x, centerMass.y - pajaro.position.y);
-        tangSpeeds.push_back(pajaro.velocity.crossProd(dist) / dist.getNorm());
-        tangSpeed += tangSpeeds[idx];
-        
-        energies.push_back(spins[idx] * spins[idx] / (2 * inertia));
+        double tsp = (pajaro.velocity.crossProd(dist) / dist.getNorm());
+        tangSpeed += tsp;
+        tangSpeedSq += tsp*tsp;
+        double e =(s*s / (2 * inertia));
         std::vector<Bird> vec = flocking(idx);
-        vecinos.push_back(vec.size());
-        avgVec += vecinos[idx];
-        for (Bird b : vec) { energies[idx] += -(coupling / (2 * maxSpeed * maxSpeed)) * (pajaro.velocity.dotProd(b.velocity)); }
-        energy += energies[idx];
+        for (Bird b : vec) { e += -(coupling / (2 * maxSpeed * maxSpeed)) * (pajaro.velocity.dotProd(b.velocity)); }
+        energy += e;
+        energySq += e*e;
     }
-    std::vector<double> vecs;
-    for (int i = 1; i < 11; i++)
-    {
-        vecs.push_back(0.0);
-        for (int j = 10*(i-1)*(i); j < 10 * (i)*(i+1); j++)
-        {
-            vecs[i - 1] += vecinos[j]/(20*(i));
-        }
-    }
-    spin = spin / N;
-    tangSpeed = tangSpeed / N;
-    energy = energy / N;
-    avgVec = avgVec / N;
-
-    double sigmaEnergy = 0 , sigmaSpin = 0, sigmaTang = 0, sigmaVec=0;
-    for (int idx = 0; idx < N; idx++)
-    {
-        sigmaSpin += (spins[idx] - spin) * (spins[idx] - spin);
-        sigmaTang += (tangSpeeds[idx] - tangSpeed) * (tangSpeeds[idx] - tangSpeed);
-        sigmaEnergy += (energies[idx] - energy) * (energies[idx] - energy);
-        sigmaVec += (vecinos[idx] - avgVec) * (vecinos[idx] - avgVec);
-    }
-    sigmaSpin = sqrt(sigmaSpin / N);
-    sigmaTang = sqrt(sigmaTang / N);
-    sigmaEnergy = sqrt(sigmaEnergy / N);
-    sigmaVec = sqrt(sigmaVec / N);
-    std::vector<double> measures = { spin, sigmaSpin, tangSpeed, sigmaTang, energy, sigmaEnergy};
-    for (unsigned int idx = 0; idx < vecs.size(); idx++) { measures.push_back(vecs[idx]); }
+    std::vector<double> measures = {spin/N,spinSq/N,energy/N,energySq/N,tangSpeed/N,tangSpeedSq/N,vecX/N,vecSqX/N,vecY/N,vecSqY/N};
     return measures;
 }
 

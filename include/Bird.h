@@ -16,7 +16,6 @@ public:
 	Bird() = default;
 	Bird(int idx, Pvector position, Pvector velocity, Pvector acc, double inertia, double maxSpeed, double length);
 
-
 	void calcLambda(double c1, double c2, double dt, double maxSpeed);
 	Pvector polarToScreen(double width, double height, double lengthX, double lengthY);
 	void partialUpdate(double dt, double maxSp, double c0, double c1, double c2);

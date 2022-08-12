@@ -5,6 +5,9 @@
 #include <math.h>
 #include <SFML/Graphics.hpp>
 #include <fstream>
+#include <string>
+#include <sstream>
+#include <iomanip>
 
 #define M_PI 3.14159926535897932385
 
@@ -57,10 +60,12 @@ void simRand(unsigned long int seed,int numSteps,int measure, int N, double boxS
 	}
 }
 
-void simCircles(int numRadi, double boxSize,double separation, int numAngles,double inert, double coupling, double maxs, double timestep, double eta, double temp, std::string filename)
+void simCircles(int totSteps,int numRadi, double boxSize,double separation, int numAngles,double inert, 
+double coupling, double maxs, double timestep, double eta, double temp, std::string filename)
 {
-	ofstream file("../Data/Ferro"+filename);
-	Flock fl = Flock(0,boxSize,timestep, maxs, inert, eta, temp, coupling, 1.0);
+	ofstream file("../Data/Circles/"+filename);
+	int seed = rand();
+	Flock fl = Flock(seed,boxSize,timestep, maxs, inert, eta, temp, coupling, 1.0);
 	int l = 0;
 	for (int i = 1; i < numRadi + 1; i++)
 		for (int j = 0; j < numAngles * i; j++)
@@ -81,16 +86,9 @@ void simCircles(int numRadi, double boxSize,double separation, int numAngles,dou
 	int c = 100;
 	if (file.is_open())
 	{
-		char s[8] = "Spin   ";
-		char ss[8] = "SigSpin";
-		char e[8] = "Ener   ";
-		char ee[8] = "SigEner";
-		char ts[8] = "TangSpd";
-		char sts[8] = "SigmSpd";
-		char vec[80] = "Vec1,Vec2,Vec3,Vec4,Vec5,Vec6,Vec7,Vec8,Vec9,Vec10  ";
-
-		file << s << "," << ss << "," << ts << "," << sts << "," << e << "," << ee << "," << vec << std::endl;
-		for (int i = 0; i < 100000; i++)
+		std::string header = "Spin,SpinSq,Ener,EnerSq,TangSpd,TangSpdSq,VecX,VecXSq,VecY,VecySq,"+std::to_string(seed);
+		file << header << std::endl;
+		for (int i = 0; i < totSteps; i++)
 		{
 			fl.updateFlock(timestep);
 			fl.boundary();
@@ -98,14 +96,18 @@ void simCircles(int numRadi, double boxSize,double separation, int numAngles,dou
 			{
 				cout.precision(17);
 				std::vector<double> medidas = fl.measurements();
-				for (unsigned int l = 0; l < medidas.size() - 1;l++) { file << std::fixed << medidas[l] << ","; }
+				for (unsigned int l = 0; l < medidas.size() - 1;l++) { file << std::setprecision(10) << medidas[l] << ","; }
 				file << medidas[medidas.size()-1] << std::endl;
 				c = 0;
-				//std::cout << i << "\n";
+				std::cout << i << "\n";
 			}
 			c++;
 		}
 		file.close();
+		std::string c = "../Data/Circles/Configs/rng"+std::to_string(temp);
+		char *cc =  const_cast<char*>(c.c_str());
+		fl.saveFile(cc,"../Data/Circles/Configs/Enviroment"+std::to_string(temp)+
+		".csv","../Data/Circles/Configs/Birds"+std::to_string(temp)+".csv",timestep);
 	}
 }
 
@@ -114,14 +116,14 @@ int main()
 	/*
 	Manager man;
 	man.Run(1.0);
+
 */
-	
-	for (int temp = 0; temp < 11; temp++)
+	for (int temp = 3; temp < 11; temp++)
 	{
-		double t = 1.0 * temp+0.01;
+		double t = 0.1 * temp+0.01;
 		int seed = rand();
-		simRand(seed, 700000, 100, 1100, 9.586, 5.0, 1.0, 1.0,0.01 , 1.0, t, "aDataT"+std::to_string(t) + ".csv");
-		//simCircles(10,15,0.8,20, 5.0, 1.0, 1.0,0.01 , 1.0, t, "DataasT"+std::to_string(t) + ".csv");
+		//simRand(seed, 7, 100, 1100, 9.586, 5.0, 1.0, 1.0,0.01 , 1.0, t, "sDataT"+std::to_string(t) + ".csv");
+		simCircles(500000,10,15,0.8,20, 5.0, 1.0, 1.0,0.01 , 1.0, t, "DataT"+std::to_string(t) + ".csv");
 	}
 
 }
