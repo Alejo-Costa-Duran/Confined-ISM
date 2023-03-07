@@ -5,8 +5,9 @@
 #include "Pvector.h"
 #include "Flock.h"
 
-Bird::Bird(int idx, Pvector position, Pvector velocity, Pvector acc, double inertia, double maxSpeed, double length)
+Bird::Bird(bool fix, int idx, Pvector position, Pvector velocity, Pvector acc, double inertia, double maxSpeed, double length)
 {
+    fixed = fix;
 	this->position = position;
 	this->velocity = velocity;
 	boundary(length,length);
@@ -70,8 +71,9 @@ void Bird::calcForce(double inertia, double coupling, std::vector<Bird>& vecinos
 		currentFx += bird.velocity.x;
 		currentFy += bird.velocity.y;
 	}
-	force.x = currentFx * coupling / inertia;
-	force.y = currentFy * coupling / inertia;
+	double rad= position.getNorm();
+	force.x = currentFx * coupling / inertia-0.011*position.x/(rad*inertia);
+	force.y = currentFy * coupling / inertia-0.011*position.y/(rad*inertia);
 }
 
 void Bird::partialUpdate(double dt, double maxS, double c0, double c1, double c2)
@@ -107,6 +109,7 @@ void Bird::boundary(double lengthX, double lengthY)
 	if (position.x < -lengthX) { position.x += 2 * lengthX; }
 	if (position.y < -lengthX) { position.y += 2 * lengthY; }
 }
+
 
 double Bird::getDistance(Bird vecino, double length)
 {

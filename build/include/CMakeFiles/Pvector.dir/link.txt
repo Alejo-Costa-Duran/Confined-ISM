@@ -1,1 +1,2 @@
-C:\PROGRA~1\MICROS~2\2022\COMMUN~1\VC\Tools\MSVC\1432~1.313\bin\Hostx86\x86\lib.exe /nologo /machine:X86 /out:Pvector.lib @CMakeFiles\Pvector.dir\objects1.rsp 
+/usr/bin/ar qc libPvector.a CMakeFiles/Pvector.dir/__/src/PVector.cpp.o CMakeFiles/Pvector.dir/__/src/Flock.cpp.o CMakeFiles/Pvector.dir/__/src/Bird.cpp.o CMakeFiles/Pvector.dir/__/src/manager.cpp.o
+/usr/bin/ranlib libPvector.a

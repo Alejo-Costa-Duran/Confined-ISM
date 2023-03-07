@@ -8,10 +8,10 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "E:/ProjectsC++/SwirlBirds/src/Bird.cpp" "include/CMakeFiles/Pvector.dir/__/src/Bird.cpp.obj" "msvc" "include/CMakeFiles/Pvector.dir/__/src/Bird.cpp.obj.d"
-  "E:/ProjectsC++/SwirlBirds/src/Flock.cpp" "include/CMakeFiles/Pvector.dir/__/src/Flock.cpp.obj" "msvc" "include/CMakeFiles/Pvector.dir/__/src/Flock.cpp.obj.d"
-  "E:/ProjectsC++/SwirlBirds/src/PVector.cpp" "include/CMakeFiles/Pvector.dir/__/src/PVector.cpp.obj" "msvc" "include/CMakeFiles/Pvector.dir/__/src/PVector.cpp.obj.d"
-  "E:/ProjectsC++/SwirlBirds/src/manager.cpp" "include/CMakeFiles/Pvector.dir/__/src/manager.cpp.obj" "msvc" "include/CMakeFiles/Pvector.dir/__/src/manager.cpp.obj.d"
+  "/home/alejo/Documentos/Programs/PajarosPolarMetric/src/Bird.cpp" "include/CMakeFiles/Pvector.dir/__/src/Bird.cpp.o" "gcc" "include/CMakeFiles/Pvector.dir/__/src/Bird.cpp.o.d"
+  "/home/alejo/Documentos/Programs/PajarosPolarMetric/src/Flock.cpp" "include/CMakeFiles/Pvector.dir/__/src/Flock.cpp.o" "gcc" "include/CMakeFiles/Pvector.dir/__/src/Flock.cpp.o.d"
+  "/home/alejo/Documentos/Programs/PajarosPolarMetric/src/PVector.cpp" "include/CMakeFiles/Pvector.dir/__/src/PVector.cpp.o" "gcc" "include/CMakeFiles/Pvector.dir/__/src/PVector.cpp.o.d"
+  "/home/alejo/Documentos/Programs/PajarosPolarMetric/src/manager.cpp" "include/CMakeFiles/Pvector.dir/__/src/manager.cpp.o" "gcc" "include/CMakeFiles/Pvector.dir/__/src/manager.cpp.o.d"
   )
 
 # Targets to which this target links.

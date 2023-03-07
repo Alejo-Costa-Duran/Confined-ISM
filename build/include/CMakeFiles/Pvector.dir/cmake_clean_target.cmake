@@ -1,3 +1,3 @@
 file(REMOVE_RECURSE
-  "Pvector.lib"
+  "libPvector.a"
 )

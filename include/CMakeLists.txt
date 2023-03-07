@@ -1,6 +1,6 @@
 add_library(
     Pvector
-    Pvector.h
+    PVector.h
     ../src/PVector.cpp
     Flock.h
     ../src/Flock.cpp
@@ -13,7 +13,9 @@ add_library(
 
 TARGET_LINK_LIBRARIES(Pvector
     gsl
+    -lgslcblas
     sfml-window
     sfml-graphics
+    sfml-system
 )
 target_include_directories(Pvector PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}")

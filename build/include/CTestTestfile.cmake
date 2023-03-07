@@ -1,6 +1,6 @@
 # CMake generated Testfile for 
-# Source directory: E:/ProjectsC++/SwirlBirds/include
-# Build directory: E:/ProjectsC++/SwirlBirds/build/include
+# Source directory: /home/alejo/Documentos/Programs/PajarosPolarMetric/include
+# Build directory: /home/alejo/Documentos/Programs/PajarosPolarMetric/build/include
 # 
 # This file includes the relevant testing commands required for 
 # testing this directory and lists subdirectories to be tested as well.

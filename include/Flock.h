@@ -6,13 +6,11 @@
 #define FLOCK_H_
 #include <gsl/gsl_rng.h>
 #include <gsl/gsl_randist.h>
-#include <fstream>
 #include <iostream>
-#include <string>
-#include <sstream>
+#include <fstream>
 
-
-class Flock {
+class Flock
+{
 public:
 	std::vector<Bird> bandada;
 	double maxSpeed, inertia, friction, temperature, coupling;
@@ -21,19 +19,18 @@ public:
 	double siga, sigv, rho;
 	double boxSize, cells;
 	unsigned long int seed;
-	gsl_rng* m_mt;
+	double fil;
+	Pvector field;
+	gsl_rng *m_mt;
 
 	Flock() = default;
-	Flock(unsigned long int seed, double boxSize,double dt, double maxs, double iner, double fric, double T, double J, double N);
-
-	void loadRng(char *c);
-	void writeRng(char *c);
-	void saveFile(char *c,std::string envs, std::string birds,double dt);
-	void addBird(std::vector<double> data);
-	void setVars(std::vector<double> vars);
-	void loadFile(char *c,std::string envs, std::string birds);
-	void randVecs(Bird& b);
+	Flock(unsigned long int seed, double boxSize, double dt, double maxs, double iner, double fric, double T, double J, double N,double f);
+    void writeRng(char *c);
+    void saveFile(char *c,std::string envs, std::string birds,double dt);
+	void loadFile(FILE *rng, std::string envs, std::string birds);
+	void randVecs(Bird &b);
 	void boundary();
+	void circularBoundary(double,double);
 	std::vector<Bird> flocking(int index);
 	void updateFlock(double dt);
 	double totalSpin();
@@ -45,8 +42,6 @@ public:
 	std::vector<double> measurementsFerro();
 
 	unsigned int test();
-
 };
-
 
 #endif

@@ -1,27 +1,27 @@
 [
 {
-  "directory": "E:/ProjectsC++/SwirlBirds/build",
-  "command": "C:\\PROGRA~1\\MICROS~2\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1432~1.313\\bin\\Hostx86\\x86\\cl.exe  /nologo /TP  -IE:\\ProjectsC++\\SwirlBirds\\include -external:IC:\\dev\\vcpkg\\vcpkg\\installed\\x86-windows\\include -external:W0 /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MD /O2 /Ob2 /DNDEBUG /FoCMakeFiles\\SwirlBirds.dir\\main.cpp.obj /FdCMakeFiles\\SwirlBirds.dir/ /FS -c E:\\ProjectsC++\\SwirlBirds\\main.cpp",
-  "file": "E:/ProjectsC++/SwirlBirds/main.cpp"
+  "directory": "/home/alejo/Documentos/Programs/PajarosPolarMetric/build",
+  "command": "/usr/bin/g++ -I/home/alejo/Documentos/Programs/PajarosPolarMetric/include -O3 -DNDEBUG -o CMakeFiles/SwirlBirds.dir/main.cpp.o -c /home/alejo/Documentos/Programs/PajarosPolarMetric/main.cpp",
+  "file": "/home/alejo/Documentos/Programs/PajarosPolarMetric/main.cpp"
 },
 {
-  "directory": "E:/ProjectsC++/SwirlBirds/build/include",
-  "command": "C:\\PROGRA~1\\MICROS~2\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1432~1.313\\bin\\Hostx86\\x86\\cl.exe  /nologo /TP  -IC:\\dev\\vcpkg\\vcpkg\\installed\\x86-windows\\include -IE:\\ProjectsC++\\SwirlBirds\\include /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MD /O2 /Ob2 /DNDEBUG /FoCMakeFiles\\Pvector.dir\\__\\src\\PVector.cpp.obj /FdCMakeFiles\\Pvector.dir\\Pvector.pdb /FS -c E:\\ProjectsC++\\SwirlBirds\\src\\PVector.cpp",
-  "file": "E:/ProjectsC++/SwirlBirds/src/PVector.cpp"
+  "directory": "/home/alejo/Documentos/Programs/PajarosPolarMetric/build",
+  "command": "/usr/bin/g++ -I/home/alejo/Documentos/Programs/PajarosPolarMetric/include -O3 -DNDEBUG -o include/CMakeFiles/Pvector.dir/__/src/PVector.cpp.o -c /home/alejo/Documentos/Programs/PajarosPolarMetric/src/PVector.cpp",
+  "file": "/home/alejo/Documentos/Programs/PajarosPolarMetric/src/PVector.cpp"
 },
 {
-  "directory": "E:/ProjectsC++/SwirlBirds/build/include",
-  "command": "C:\\PROGRA~1\\MICROS~2\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1432~1.313\\bin\\Hostx86\\x86\\cl.exe  /nologo /TP  -IC:\\dev\\vcpkg\\vcpkg\\installed\\x86-windows\\include -IE:\\ProjectsC++\\SwirlBirds\\include /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MD /O2 /Ob2 /DNDEBUG /FoCMakeFiles\\Pvector.dir\\__\\src\\Flock.cpp.obj /FdCMakeFiles\\Pvector.dir\\Pvector.pdb /FS -c E:\\ProjectsC++\\SwirlBirds\\src\\Flock.cpp",
-  "file": "E:/ProjectsC++/SwirlBirds/src/Flock.cpp"
+  "directory": "/home/alejo/Documentos/Programs/PajarosPolarMetric/build",
+  "command": "/usr/bin/g++ -I/home/alejo/Documentos/Programs/PajarosPolarMetric/include -O3 -DNDEBUG -o include/CMakeFiles/Pvector.dir/__/src/Flock.cpp.o -c /home/alejo/Documentos/Programs/PajarosPolarMetric/src/Flock.cpp",
+  "file": "/home/alejo/Documentos/Programs/PajarosPolarMetric/src/Flock.cpp"
 },
 {
-  "directory": "E:/ProjectsC++/SwirlBirds/build/include",
-  "command": "C:\\PROGRA~1\\MICROS~2\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1432~1.313\\bin\\Hostx86\\x86\\cl.exe  /nologo /TP  -IC:\\dev\\vcpkg\\vcpkg\\installed\\x86-windows\\include -IE:\\ProjectsC++\\SwirlBirds\\include /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MD /O2 /Ob2 /DNDEBUG /FoCMakeFiles\\Pvector.dir\\__\\src\\Bird.cpp.obj /FdCMakeFiles\\Pvector.dir\\Pvector.pdb /FS -c E:\\ProjectsC++\\SwirlBirds\\src\\Bird.cpp",
-  "file": "E:/ProjectsC++/SwirlBirds/src/Bird.cpp"
+  "directory": "/home/alejo/Documentos/Programs/PajarosPolarMetric/build",
+  "command": "/usr/bin/g++ -I/home/alejo/Documentos/Programs/PajarosPolarMetric/include -O3 -DNDEBUG -o include/CMakeFiles/Pvector.dir/__/src/Bird.cpp.o -c /home/alejo/Documentos/Programs/PajarosPolarMetric/src/Bird.cpp",
+  "file": "/home/alejo/Documentos/Programs/PajarosPolarMetric/src/Bird.cpp"
 },
 {
-  "directory": "E:/ProjectsC++/SwirlBirds/build/include",
-  "command": "C:\\PROGRA~1\\MICROS~2\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1432~1.313\\bin\\Hostx86\\x86\\cl.exe  /nologo /TP  -IC:\\dev\\vcpkg\\vcpkg\\installed\\x86-windows\\include -IE:\\ProjectsC++\\SwirlBirds\\include /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MD /O2 /Ob2 /DNDEBUG /FoCMakeFiles\\Pvector.dir\\__\\src\\manager.cpp.obj /FdCMakeFiles\\Pvector.dir\\Pvector.pdb /FS -c E:\\ProjectsC++\\SwirlBirds\\src\\manager.cpp",
-  "file": "E:/ProjectsC++/SwirlBirds/src/manager.cpp"
+  "directory": "/home/alejo/Documentos/Programs/PajarosPolarMetric/build",
+  "command": "/usr/bin/g++ -I/home/alejo/Documentos/Programs/PajarosPolarMetric/include -O3 -DNDEBUG -o include/CMakeFiles/Pvector.dir/__/src/manager.cpp.o -c /home/alejo/Documentos/Programs/PajarosPolarMetric/src/manager.cpp",
+  "file": "/home/alejo/Documentos/Programs/PajarosPolarMetric/src/manager.cpp"
 }
 ]

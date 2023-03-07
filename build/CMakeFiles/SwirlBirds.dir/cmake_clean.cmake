@@ -1,9 +1,7 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/SwirlBirds.dir/main.cpp.obj"
-  "CMakeFiles/SwirlBirds.dir/main.cpp.obj.d"
-  "SwirlBirds.exe"
-  "SwirlBirds.exe.manifest"
-  "SwirlBirds.lib"
+  "CMakeFiles/SwirlBirds.dir/main.cpp.o"
+  "CMakeFiles/SwirlBirds.dir/main.cpp.o.d"
+  "SwirlBirds"
   "SwirlBirds.pdb"
 )
 

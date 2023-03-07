@@ -8,13 +8,11 @@
 #include <gsl/gsl_randist.h>
 #include <iomanip>
 
-
-
 // =============================================== //
 // ======== Flock Functions from Flock.h ========= //
 // =============================================== //
 
-Flock::Flock(unsigned long int seed,double boxSize,double dt, double maxSp, double iner, double fric, double T, double J, double N)
+Flock::Flock(unsigned long int seed, double boxSize, double dt, double maxSp, double iner, double fric, double T, double J, double N,double f)
 {
     inertia = iner;
     this->seed = seed;
@@ -22,13 +20,29 @@ Flock::Flock(unsigned long int seed,double boxSize,double dt, double maxSp, doub
     temperature = T;
     coupling = J;
     numNeigh = N;
-    cells = boxSize*2/floor(2*boxSize);
+    cells = boxSize * 2 / floor(2 * boxSize);
     maxSpeed = maxSp;
     setConstants(dt);
     this->m_mt = gsl_rng_alloc(gsl_rng_mt19937);
     gsl_rng_set(m_mt, seed);
     this->boxSize = boxSize;
+    field = Pvector(0,0);
+    fil = f;
 }
+
+void Flock::loadFile(FILE *rng, std::string env, std::string birds)
+{
+    gsl_rng_fread(rng, m_mt);
+    std::ifstream ifs;
+    ifs.open(env, std::ifstream::in);
+}
+
+void Flock::randVecs(Bird &b)
+{
+    gsl_ran_bivariate_gaussian(m_mt, siga, sigv, rho, &b.randA.x, &b.randV.x);
+    gsl_ran_bivariate_gaussian(m_mt, siga, sigv, rho, &b.randA.y, &b.randV.y);
+}
+
 
 void Flock::writeRng(char *c)
 {
@@ -37,28 +51,6 @@ void Flock::writeRng(char *c)
     int a = gsl_rng_fwrite(rngFile,m_mt);
     fclose(rngFile);
     std::cout<<a<<"\n";
-}
-
-void Flock::setVars(std::vector<double> vars)
-{
-    inertia = vars[0];
-    seed = vars[1];
-    friction = vars[2];
-    temperature = vars[3];
-    coupling = vars[4];
-    numNeigh = vars[5];
-    boxSize = vars[6];
-    maxSpeed = vars[7];
-    cells = boxSize*2/floor(2*boxSize);
-    setConstants(vars[8]);
-}
-
-void Flock::loadRng(char *c)
-{
-    FILE *pFile;
-    pFile = fopen(c,"rb");
-    gsl_rng_fread(pFile,m_mt);
-    fclose(pFile);
 }
 
 void Flock::saveFile(char *c,std::string envs, std::string birds,double dt)
@@ -79,67 +71,6 @@ void Flock::saveFile(char *c,std::string envs, std::string birds,double dt)
         b.force.x<<","<<b.force.y<<","<<b.randA.x<<","<<b.randA.y<<","<<b.randV.x<<","<<b.randV.y<<"\n";
     }
     data.close();
-}
-
-void Flock::addBird(std::vector<double> data)
-{
-    Pvector position(data[1],data[2]);
-    Pvector velocity(data[3],data[4]);
-    Pvector acc(data[5],data[6]);
-    Pvector deltaV(data[9],data[10]);
-    Pvector Force(data[11],data[12]);
-    Pvector randA(data[13],data[14]);
-    Pvector randV(data[15],data[16]);
-    bandada.push_back(Bird(data[0], position,velocity, acc, inertia,maxSpeed, boxSize));
-    bandada[data[0]].lambda = data[7];
-    bandada[data[0]].mu = data[8];
-    bandada[data[0]].force = Force;
-    bandada[data[0]].deltaV = deltaV;
-    bandada[data[0]].randA = randA;
-    bandada[data[0]].randV = randV;
-}
-
-void Flock::loadFile(char *c,std::string envs, std::string birds)
-{
-    loadRng(c);
-
-    ifstream variables(envs);
-    std::string dat;
-    std::getline(variables,dat);
-    std::stringstream ss(dat);
-    std::vector<double> v;
-    double dtemp;
-    while(ss >> dtemp)
-	{
-		std::string stemp {};
-		v.push_back(dtemp);
-		std::getline(ss,stemp,',');
-	}
-    variables.close();
-    setVars(v);
-
-    ifstream flocks(birds);
-    while(std::getline(flocks,dat))
-    {
-    std::vector<double> v;
-    std::stringstream ss(dat);
-    while(ss>>dtemp)
-        {
-            std::string stemp {};
-            v.push_back(dtemp);
-            std::getline(ss,stemp,',');
-        }
-        addBird(v);
-    }
-    flocks.close();
-}
-
-
-
-void Flock::randVecs(Bird& b)
-{
-    gsl_ran_bivariate_gaussian(m_mt, siga, sigv, rho, &b.randA.x, &b.randV.x);
-    gsl_ran_bivariate_gaussian(m_mt, siga, sigv, rho, &b.randA.y, &b.randV.y);
 }
 
 void Flock::setConstants(double dt)
@@ -164,7 +95,7 @@ void Flock::setConstants(double dt)
     }
     siga = (temperature / inertia) * (1 - exi * exi);
     siga = sqrt(siga);
-    if (etasv0 < 1e-3)
+    if (etasv0 < 1e-3 || xidt <1e-3)
     {
         sigv = temperature * dt * dt * dt * etasv0 * (2. / 3. - 0.5 * xidt) / (inertia * inertia);
     }
@@ -173,25 +104,47 @@ void Flock::setConstants(double dt)
         sigv = (temperature / etasv0) * (2 * dt - (3 - 4 * exi + exi * exi) / xi);
     }
     sigv = sqrt(sigv);
+
 }
 
 void Flock::boundary()
 {
     for (unsigned int l = 0; l < bandada.size(); l++)
     {
-        bandada[l].boundary(boxSize,boxSize);
+        bandada[l].boundary(boxSize, boxSize);
+    }
+}
+
+void Flock::circularBoundary(double innerRad,double outerRad)
+{
+    for(unsigned int idx=0; idx<bandada.size(); idx++)
+    {
+        double rad = bandada[idx].position.getNorm();
+	    if(rad<innerRad || rad>outerRad )
+	    {
+		    double theta = 2*M_PI*gsl_rng_uniform(m_mt);
+		    bandada[idx].position.x = outerRad*cos(theta);
+		    bandada[idx].position.y = outerRad*sin(theta);
+            bandada[idx].acc.x=0;
+            bandada[idx].acc.y=0;
+	    }
     }
 }
 
 double Flock::totalTangSpeed()
 {
     double tang = 0;
+    Pvector centerMass(0,0);
+    for(Bird b : bandada){centerMass.x += b.position.x; centerMass.y += b.position.y;}
+    centerMass.mulScalar(1.0/bandada.size());
     for (unsigned int index = 0; index < bandada.size(); index++)
     {
-        double angle = atan2(bandada[index].position.y, bandada[index].position.x);
-        tang += -bandada[index].velocity.x * sin(angle) + bandada[index].velocity.y * cos(angle);
+        Pvector dist(0,0);
+        dist.x = centerMass.x - bandada[index].position.x;
+        dist.y = centerMass.y - bandada[index].position.y;
+        tang += bandada[index].velocity.crossProd(dist)/dist.getNorm();
     }
-    return tang;
+    return tang/bandada.size();
 }
 
 vector<Bird> Flock::flocking(int index)
@@ -206,12 +159,12 @@ vector<Bird> Flock::flocking(int index)
 
     */
     std::vector<Bird> vecinos;
-    int box = 2*boxSize-1;
-    for (auto& b : bandada)
+    int box = 2 * boxSize - 1;
+    for (auto &b : bandada)
     {
 
-        if(((abs(b.boxX - pajaro.boxX)%box)<3) && ((abs(b.boxY - pajaro.boxY)%box)<3))
-        { 
+        if (((abs(b.boxX - pajaro.boxX) % box) < 3) && ((abs(b.boxY - pajaro.boxY) % box) < 3))
+        {
             if (pajaro.getDistance(b, boxSize) < numNeigh && pajaro.getDistance(b, boxSize) != 0)
             {
                 vecinos.push_back(b);
@@ -234,32 +187,37 @@ double Flock::avgRad()
 
 void Flock::updateFlock(double dt)
 {
-    for (Bird& b : bandada)
+    for (Bird &b : bandada)
     {
-        //Calc  noise
+
+        if(!b.fixed)
+        {
+        // Calc  noise
         randVecs(b);
 
-        //Update position
         b.position.x += b.velocity.x * dt;
         b.position.y += b.velocity.y * dt;
 
         //
-        b.boundary(boxSize,boxSize);
+        //b.boundary(boxSize, boxSize);
+        circularBoundary(0.1,10);
+        // Update box
+        b.boxX = floor((b.position.x + boxSize) / cells);
+        b.boxY = floor((b.position.y + boxSize) / cells);
 
-        //Update box
-	    b.boxX = floor((b.position.x+boxSize)/cells);
-	    b.boxY = floor((b.position.y+boxSize)/cells);
+        // Velocity without constraint
+        b.deltaV.x = c1 * dt * b.acc.x + c2 * dt * dt * (b.force.x) + b.randV.x;
+        b.deltaV.y = c1 * dt * b.acc.y + c2 * dt * dt * (b.force.y) + b.randV.y;
 
-        //Velocity without constraint
-        b.deltaV.x = c1 * dt * b.acc.x + c2 * dt * dt * b.force.x + b.randV.x;
-        b.deltaV.y = c1 * dt * b.acc.y + c2 * dt * dt * b.force.y + b.randV.y;
-
-        //Lagrange multiplier
+        // Lagrange multiplier
         double b0 = 2 * (b.velocity.x * b.deltaV.x + b.deltaV.y * b.velocity.y);
         double a = maxSpeed * maxSpeed;
         double c = b.deltaV.x * b.deltaV.x + b.deltaV.y * b.deltaV.y - a;
         double w;
-        if (b0 == 0) { w = sqrt(-c / a); }
+        if (b0 == 0)
+        {
+            w = sqrt(-c / a);
+        }
         else
         {
             double sgnb = b0 > 0 ? 1.0 : -1.0;
@@ -268,35 +226,37 @@ void Flock::updateFlock(double dt)
         }
         b.lambda = (w - 1) / (c2 * dt * dt);
 
-        //Partial update of acc
+        // Partial update of acc
         b.acc.x = c0 * b.acc.x + (c1 - c2) * dt * (b.force.x + b.lambda * b.velocity.x) + b.randA.x;
         b.acc.y = c0 * b.acc.y + (c1 - c2) * dt * (b.force.y + b.lambda * b.velocity.y) + b.randA.y;
 
-        //Update v
-        b.velocity.x = (1+c2 * dt * dt * b.lambda) * b.velocity.x + b.deltaV.x;
-        b.velocity.y = (1+c2 * dt * dt * b.lambda) * b.velocity.y + b.deltaV.y;
+        // Update v
+        b.velocity.x = (1 + c2 * dt * dt * b.lambda) * b.velocity.x + b.deltaV.x;
+        b.velocity.y = (1 + c2 * dt * dt * b.lambda) * b.velocity.y + b.deltaV.y;
 
-        //Update forces
+        // Update forces
         std::vector<Bird> vec = flocking(b.idx);
         b.calcForce(inertia, coupling, vec);
 
-        //Update a
-        b.acc.x += c2 * dt * b.force.x;
-        b.acc.y += c2 * dt * b.force.y;
 
-        //Calc mu
+        // Update a
+        b.acc.x += c2 * dt * (b.force.x);
+        b.acc.y += c2 * dt * (b.force.y);
+
+        // Calc mu
         b.mu = -b.velocity.dotProd(b.acc) / (maxSpeed * maxSpeed);
 
-        //Final update a
+        // Final update a
         b.acc.x += b.velocity.x * b.mu;
         b.acc.y += b.velocity.y * b.mu;
+        }
     }
 }
 
 double Flock::totalSpin()
 {
     double totSpin = 0;
-    for (auto& b : bandada)
+    for (auto &b : bandada)
     {
         totSpin += b.getSpin(inertia, maxSpeed);
     }
@@ -322,11 +282,14 @@ std::vector<double> Flock::measurementsFerro()
         squareAvgVecY += pajaro.velocity.y * pajaro.velocity.y;
         e += s * s / (2 * inertia);
         std::vector<Bird> vec = flocking(idx);
-        for (Bird b : vec) { e  += -(coupling / (2 * maxSpeed * maxSpeed)) * (pajaro.velocity.dotProd(b.velocity)); }
+        for (Bird b : vec)
+        {
+            e += -(coupling / (2 * maxSpeed * maxSpeed)) * (pajaro.velocity.dotProd(b.velocity));
+        }
         energy += e;
         squareEnergy += e * e;
     }
-    std::vector<double> measures = { spin/N, squareSpin/N, avgVecx/N,squareAvgVecX/N, avgVecy/N, squareAvgVecY/N, energy/N, squareEnergy/N };
+    std::vector<double> measures = {spin / N, squareSpin / N, avgVecx / N, squareAvgVecX / N, avgVecy / N, squareAvgVecY / N, energy / N, squareEnergy / N};
     return measures;
 }
 
@@ -355,8 +318,8 @@ std::vector<double> Flock::measurements()
         vecY += vy;
         vecSqX += vx*vx;
         vecSqY += vy*vy;
-        Pvector dist(centerMass.x - pajaro.position.x, centerMass.y - pajaro.position.y);
-        double tsp = (pajaro.velocity.crossProd(dist) / dist.getNorm());
+        //Pvector dist(centerMass.x - pajaro.position.x, centerMass.y - pajaro.position.y);
+        double tsp = (pajaro.velocity.crossProd(pajaro.position) / pajaro.position.getNorm());
         tangSpeed += tsp;
         tangSpeedSq += tsp*tsp;
         double e =(s*s / (2 * inertia));
@@ -368,7 +331,6 @@ std::vector<double> Flock::measurements()
     std::vector<double> measures = {spin/N,spinSq/N,energy/N,energySq/N,tangSpeed/N,tangSpeedSq/N,vecX/N,vecSqX/N,vecY/N,vecSqY/N};
     return measures;
 }
-
 double Flock::totalEnergy()
 {
     double energy = 0;
