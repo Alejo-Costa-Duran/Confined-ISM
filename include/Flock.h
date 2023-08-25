@@ -32,7 +32,7 @@ public:
 	void boundary();
 	void circularBoundary(double,double);
 	std::vector<Bird> flocking(int index);
-	void updateFlock(double dt);
+	void updateFlock(double dt, double fieldStrength);
 	double totalSpin();
 	double totalEnergy();
 	double totalTangSpeed();

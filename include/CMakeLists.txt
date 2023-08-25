@@ -6,8 +6,8 @@ add_library(
     ../src/Flock.cpp
     Bird.h
     ../src/Bird.cpp
-    manager.h
-    ../src/manager.cpp
+    Simulation.h
+    ../src/Simulation.cpp
 )
 
 

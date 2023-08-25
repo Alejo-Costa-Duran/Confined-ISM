@@ -65,7 +65,7 @@ void Manager::Run(float fric)
 	for (unsigned int idx = 0; idx < flock.bandada.size(); idx++)
 	{
 		std::vector<Bird> vec = flock.flocking(idx);
-		flock.bandada[idx].calcForce(inert, coupling, vec);
+		flock.bandada[idx].calcForce(inert, coupling, vec,0);
 	}
 
 	//Whole block of text can probably simplified in a function as well in order to remove redundancy
@@ -133,7 +133,7 @@ void Manager::Render(sf::Text fpsText, double fps, double time)
 
 	// Draws all of the Boids out, and applies functions that are needed to update.
 
-	flock.updateFlock(time);
+	flock.updateFlock(time,0);
 	//flock.boundary();
 	for (unsigned int i = 0; i < shapes.size(); i++) {
 		//Pvector vel = flock.bandada[i].velocity;

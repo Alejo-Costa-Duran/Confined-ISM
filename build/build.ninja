@@ -560,8 +560,8 @@ build include/CMakeFiles/Pvector.dir/__/src/Bird.cpp.o: CXX_COMPILER__Pvector_Re
   OBJECT_DIR = include/CMakeFiles/Pvector.dir
   OBJECT_FILE_DIR = include/CMakeFiles/Pvector.dir/__/src
 
-build include/CMakeFiles/Pvector.dir/__/src/manager.cpp.o: CXX_COMPILER__Pvector_Release /home/alejo/Documentos/Programs/PajarosPolarMetric/src/manager.cpp || cmake_object_order_depends_target_Pvector
-  DEP_FILE = include/CMakeFiles/Pvector.dir/__/src/manager.cpp.o.d
+build include/CMakeFiles/Pvector.dir/__/src/Simulation.cpp.o: CXX_COMPILER__Pvector_Release /home/alejo/Documentos/Programs/PajarosPolarMetric/src/Simulation.cpp || cmake_object_order_depends_target_Pvector
+  DEP_FILE = include/CMakeFiles/Pvector.dir/__/src/Simulation.cpp.o.d
   FLAGS = -O3 -DNDEBUG
   INCLUDES = -I/home/alejo/Documentos/Programs/PajarosPolarMetric/include
   OBJECT_DIR = include/CMakeFiles/Pvector.dir
@@ -575,7 +575,7 @@ build include/CMakeFiles/Pvector.dir/__/src/manager.cpp.o: CXX_COMPILER__Pvector
 #############################################
 # Link the static library include/libPvector.a
 
-build include/libPvector.a: CXX_STATIC_LIBRARY_LINKER__Pvector_Release include/CMakeFiles/Pvector.dir/__/src/PVector.cpp.o include/CMakeFiles/Pvector.dir/__/src/Flock.cpp.o include/CMakeFiles/Pvector.dir/__/src/Bird.cpp.o include/CMakeFiles/Pvector.dir/__/src/manager.cpp.o
+build include/libPvector.a: CXX_STATIC_LIBRARY_LINKER__Pvector_Release include/CMakeFiles/Pvector.dir/__/src/PVector.cpp.o include/CMakeFiles/Pvector.dir/__/src/Flock.cpp.o include/CMakeFiles/Pvector.dir/__/src/Bird.cpp.o include/CMakeFiles/Pvector.dir/__/src/Simulation.cpp.o
   LANGUAGE_COMPILE_FLAGS = -O3 -DNDEBUG
   OBJECT_DIR = include/CMakeFiles/Pvector.dir
   POST_BUILD = :

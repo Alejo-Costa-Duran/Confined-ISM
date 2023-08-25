@@ -117,7 +117,7 @@ include/CMakeFiles/Pvector.dir/__/src/Bird.cpp.o: /home/alejo/Documentos/Program
   /usr/include/c++/11/bits/range_access.h \
   /usr/include/c++/11/bits/vector.tcc \
   /home/alejo/Documentos/Programs/PajarosPolarMetric/include/Bird.h \
-  /home/alejo/Documentos/Programs/PajarosPolarMetric/include/PVector.h \
+  /home/alejo/Documentos/Programs/PajarosPolarMetric/include/Pvector.h \
   /usr/include/c++/11/iostream \
   /usr/include/c++/11/ostream \
   /usr/include/c++/11/ios \
@@ -289,14 +289,12 @@ include/CMakeFiles/Pvector.dir/__/src/Bird.cpp.o: /home/alejo/Documentos/Program
   /usr/include/c++/11/bits/codecvt.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
-  /usr/include/c++/11/bits/fstream.tcc \
-  /usr/include/c++/11/sstream \
-  /usr/include/c++/11/bits/sstream.tcc
+  /usr/include/c++/11/bits/fstream.tcc
 
 include/CMakeFiles/Pvector.dir/__/src/Flock.cpp.o: /home/alejo/Documentos/Programs/PajarosPolarMetric/src/Flock.cpp \
   /usr/include/stdc-predef.h \
   /home/alejo/Documentos/Programs/PajarosPolarMetric/include/Bird.h \
-  /home/alejo/Documentos/Programs/PajarosPolarMetric/include/PVector.h \
+  /home/alejo/Documentos/Programs/PajarosPolarMetric/include/Pvector.h \
   /usr/include/c++/11/iostream \
   /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
@@ -582,8 +580,6 @@ include/CMakeFiles/Pvector.dir/__/src/Flock.cpp.o: /home/alejo/Documentos/Progra
   /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
   /usr/include/c++/11/bits/fstream.tcc \
-  /usr/include/c++/11/sstream \
-  /usr/include/c++/11/bits/sstream.tcc \
   /usr/include/c++/11/algorithm \
   /usr/include/c++/11/utility \
   /usr/include/c++/11/bits/stl_relops.h \
@@ -618,7 +614,9 @@ include/CMakeFiles/Pvector.dir/__/src/Flock.cpp.o: /home/alejo/Documentos/Progra
   /usr/include/c++/11/bits/locale_facets_nonio.tcc \
   /usr/include/c++/11/bits/locale_conv.h \
   /usr/include/c++/11/bits/unique_ptr.h \
-  /usr/include/c++/11/bits/quoted_string.h
+  /usr/include/c++/11/bits/quoted_string.h \
+  /usr/include/c++/11/sstream \
+  /usr/include/c++/11/bits/sstream.tcc
 
 include/CMakeFiles/Pvector.dir/__/src/PVector.cpp.o: /home/alejo/Documentos/Programs/PajarosPolarMetric/src/PVector.cpp \
   /usr/include/stdc-predef.h \
@@ -718,7 +716,7 @@ include/CMakeFiles/Pvector.dir/__/src/PVector.cpp.o: /home/alejo/Documentos/Prog
   /usr/include/c++/11/tr1/poly_laguerre.tcc \
   /usr/include/c++/11/tr1/riemann_zeta.tcc \
   /usr/include/c++/11/math.h \
-  /home/alejo/Documentos/Programs/PajarosPolarMetric/include/PVector.h \
+  /home/alejo/Documentos/Programs/PajarosPolarMetric/include/Pvector.h \
   /usr/include/c++/11/iostream \
   /usr/include/c++/11/ostream \
   /usr/include/c++/11/ios \
@@ -940,7 +938,7 @@ include/CMakeFiles/Pvector.dir/__/src/manager.cpp.o: /home/alejo/Documentos/Prog
   /usr/include/c++/11/bits/range_access.h \
   /usr/include/c++/11/bits/vector.tcc \
   /home/alejo/Documentos/Programs/PajarosPolarMetric/include/Bird.h \
-  /home/alejo/Documentos/Programs/PajarosPolarMetric/include/PVector.h \
+  /home/alejo/Documentos/Programs/PajarosPolarMetric/include/Pvector.h \
   /usr/include/c++/11/iostream \
   /usr/include/c++/11/ostream \
   /usr/include/c++/11/ios \
@@ -1178,8 +1176,6 @@ include/CMakeFiles/Pvector.dir/__/src/manager.cpp.o: /home/alejo/Documentos/Prog
   /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
   /usr/include/c++/11/bits/fstream.tcc \
-  /usr/include/c++/11/sstream \
-  /usr/include/c++/11/bits/sstream.tcc \
   /home/alejo/Documentos/Programs/PajarosPolarMetric/include/manager.h \
   /usr/local/include/SFML/Window.hpp \
   /usr/local/include/SFML/System.hpp \
@@ -1216,6 +1212,8 @@ include/CMakeFiles/Pvector.dir/__/src/manager.cpp.o: /home/alejo/Documentos/Prog
   /usr/include/c++/11/bits/invoke.h \
   /usr/include/c++/11/iomanip \
   /usr/include/c++/11/bits/quoted_string.h \
+  /usr/include/c++/11/sstream \
+  /usr/include/c++/11/bits/sstream.tcc \
   /usr/include/c++/11/codecvt \
   /usr/include/c++/11/ext/concurrence.h \
   /usr/include/c++/11/bits/shared_ptr.h \
@@ -1422,6 +1420,8 @@ include/CMakeFiles/Pvector.dir/__/src/manager.cpp.o: /home/alejo/Documentos/Prog
 
 /usr/local/include/SFML/System/InputStream.hpp:
 
+/usr/local/include/SFML/System/FileInputStream.hpp:
+
 /usr/include/c++/11/ratio:
 
 /usr/include/assert.h:
@@ -1437,6 +1437,12 @@ include/CMakeFiles/Pvector.dir/__/src/manager.cpp.o: /home/alejo/Documentos/Prog
 /home/alejo/Documentos/Programs/PajarosPolarMetric/include/manager.h:
 
 /home/alejo/Documentos/Programs/PajarosPolarMetric/src/manager.cpp:
+
+/usr/local/include/SFML/Graphics/Text.hpp:
+
+/usr/local/include/SFML/System/Vector2.hpp:
+
+/usr/include/c++/11/sstream:
 
 /usr/include/c++/11/bits/unique_ptr.h:
 
@@ -1494,12 +1500,6 @@ include/CMakeFiles/Pvector.dir/__/src/manager.cpp.o: /home/alejo/Documentos/Prog
 
 /home/alejo/Documentos/Programs/PajarosPolarMetric/src/Flock.cpp:
 
-/usr/local/include/SFML/Graphics/Text.hpp:
-
-/usr/local/include/SFML/System/Vector2.hpp:
-
-/usr/include/c++/11/sstream:
-
 /usr/include/c++/11/bits/fstream.tcc:
 
 /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h:
@@ -1556,15 +1556,11 @@ include/CMakeFiles/Pvector.dir/__/src/manager.cpp.o: /home/alejo/Documentos/Prog
 
 /usr/include/c++/11/tr1/special_function_util.h:
 
+/usr/include/c++/11/backward/binders.h:
+
 /usr/local/include/SFML/Window/Cursor.hpp:
 
 /usr/include/c++/11/bits/stringfwd.h:
-
-/usr/include/c++/11/backward/binders.h:
-
-/usr/local/include/SFML/System/FileInputStream.hpp:
-
-/home/alejo/Documentos/Programs/PajarosPolarMetric/include/PVector.h:
 
 /usr/include/c++/11/bits/string_view.tcc:
 
@@ -1997,6 +1993,8 @@ include/CMakeFiles/Pvector.dir/__/src/manager.cpp.o: /home/alejo/Documentos/Prog
 /usr/include/c++/11/bits/stl_bvector.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/struct___jmp_buf_tag.h:
+
+/home/alejo/Documentos/Programs/PajarosPolarMetric/include/Pvector.h:
 
 /usr/include/c++/11/tr1/legendre_function.tcc:
 

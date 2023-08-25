@@ -21,7 +21,7 @@
 },
 {
   "directory": "/home/alejo/Documentos/Programs/PajarosPolarMetric/build",
-  "command": "/usr/bin/g++ -I/home/alejo/Documentos/Programs/PajarosPolarMetric/include -O3 -DNDEBUG -o include/CMakeFiles/Pvector.dir/__/src/manager.cpp.o -c /home/alejo/Documentos/Programs/PajarosPolarMetric/src/manager.cpp",
-  "file": "/home/alejo/Documentos/Programs/PajarosPolarMetric/src/manager.cpp"
+  "command": "/usr/bin/g++ -I/home/alejo/Documentos/Programs/PajarosPolarMetric/include -O3 -DNDEBUG -o include/CMakeFiles/Pvector.dir/__/src/Simulation.cpp.o -c /home/alejo/Documentos/Programs/PajarosPolarMetric/src/Simulation.cpp",
+  "file": "/home/alejo/Documentos/Programs/PajarosPolarMetric/src/Simulation.cpp"
 }
 ]

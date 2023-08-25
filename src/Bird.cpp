@@ -62,7 +62,7 @@ void Bird::updateVelocity(double dt, double c1, double c2)
 	velocity.y += c1 * dt * acc.y + dt * dt * c2 * force.y + dt * dt * c2 * lambda * velocity.y + randV.y;
 }
 
-void Bird::calcForce(double inertia, double coupling, std::vector<Bird>& vecinos)
+void Bird::calcForce(double inertia, double coupling, std::vector<Bird>& vecinos, double fieldStrength)
 {
 	double currentFx = 0;
 	double currentFy = 0;
@@ -71,9 +71,12 @@ void Bird::calcForce(double inertia, double coupling, std::vector<Bird>& vecinos
 		currentFx += bird.velocity.x;
 		currentFy += bird.velocity.y;
 	}
-	double rad= position.getNorm();
-	force.x = currentFx * coupling / inertia-0.011*position.x/(rad*inertia);
-	force.y = currentFy * coupling / inertia-0.011*position.y/(rad*inertia);
+	//double rad= position.getNorm();
+	//force.x = currentFx * coupling / inertia-fieldStrength*position.x/(rad*rad*inertia);
+	//force.y = currentFy * coupling / inertia-fieldStrength*position.y/(rad*rad*inertia);
+	force.x = currentFx * coupling / inertia-fieldStrength*position.x/(inertia);
+	force.y = currentFy * coupling / inertia-fieldStrength*position.y/(inertia);
+
 }
 
 void Bird::partialUpdate(double dt, double maxS, double c0, double c1, double c2)
@@ -92,9 +95,9 @@ double Bird::getSpin(double inertia, double maxSpeed)
 	return (inertia / (maxSpeed * maxSpeed)) * (velocity.x * acc.y - velocity.y * acc.x);
 }
 
-void Bird::finalUpdate(double c2, double maxS, double dt, double inertia, double coupling, std::vector<Bird>& vecinos)
+void Bird::finalUpdate(double c2, double maxS, double dt, double inertia, double coupling, std::vector<Bird>& vecinos, double fieldStrength)
 {
-	calcForce(inertia, coupling, vecinos);
+	calcForce(inertia, coupling, vecinos, fieldStrength);
 	acc.x += c2 * dt * force.x + randA.x;
 	acc.y += c2 * dt * force.y + randA.y;
 	calcMu(c2, dt, maxS);

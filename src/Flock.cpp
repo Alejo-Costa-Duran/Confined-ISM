@@ -50,7 +50,6 @@ void Flock::writeRng(char *c)
     rngFile = fopen(c,"wb");
     int a = gsl_rng_fwrite(rngFile,m_mt);
     fclose(rngFile);
-    std::cout<<a<<"\n";
 }
 
 void Flock::saveFile(char *c,std::string envs, std::string birds,double dt)
@@ -185,7 +184,7 @@ double Flock::avgRad()
     return rad / bandada.size();
 }
 
-void Flock::updateFlock(double dt)
+void Flock::updateFlock(double dt, double fieldStrength)
 {
     for (Bird &b : bandada)
     {
@@ -200,7 +199,7 @@ void Flock::updateFlock(double dt)
 
         //
         //b.boundary(boxSize, boxSize);
-        circularBoundary(0.1,10);
+        //circularBoundary(1,10);
         // Update box
         b.boxX = floor((b.position.x + boxSize) / cells);
         b.boxY = floor((b.position.y + boxSize) / cells);
@@ -236,7 +235,7 @@ void Flock::updateFlock(double dt)
 
         // Update forces
         std::vector<Bird> vec = flocking(b.idx);
-        b.calcForce(inertia, coupling, vec);
+        b.calcForce(inertia, coupling, vec, fieldStrength);
 
 
         // Update a

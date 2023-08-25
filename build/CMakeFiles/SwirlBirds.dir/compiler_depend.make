@@ -53,7 +53,7 @@ CMakeFiles/SwirlBirds.dir/main.cpp.o: /home/alejo/Documentos/Programs/PajarosPol
   /usr/include/c++/11/bits/range_access.h \
   /usr/include/c++/11/bits/vector.tcc \
   /home/alejo/Documentos/Programs/PajarosPolarMetric/include/Bird.h \
-  /home/alejo/Documentos/Programs/PajarosPolarMetric/include/PVector.h \
+  /home/alejo/Documentos/Programs/PajarosPolarMetric/include/Pvector.h \
   /usr/include/c++/11/iostream \
   /usr/include/c++/11/ostream \
   /usr/include/c++/11/ios \
@@ -291,8 +291,6 @@ CMakeFiles/SwirlBirds.dir/main.cpp.o: /home/alejo/Documentos/Programs/PajarosPol
   /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
   /usr/include/c++/11/bits/fstream.tcc \
-  /usr/include/c++/11/sstream \
-  /usr/include/c++/11/bits/sstream.tcc \
   /usr/local/include/SFML/Window.hpp \
   /usr/local/include/SFML/System.hpp \
   /usr/local/include/SFML/Config.hpp \
@@ -328,6 +326,8 @@ CMakeFiles/SwirlBirds.dir/main.cpp.o: /home/alejo/Documentos/Programs/PajarosPol
   /usr/include/c++/11/bits/invoke.h \
   /usr/include/c++/11/iomanip \
   /usr/include/c++/11/bits/quoted_string.h \
+  /usr/include/c++/11/sstream \
+  /usr/include/c++/11/bits/sstream.tcc \
   /usr/include/c++/11/codecvt \
   /usr/include/c++/11/ext/concurrence.h \
   /usr/include/c++/11/bits/shared_ptr.h \
@@ -421,8 +421,28 @@ CMakeFiles/SwirlBirds.dir/main.cpp.o: /home/alejo/Documentos/Programs/PajarosPol
   /usr/local/include/SFML/Graphics/Sprite.hpp \
   /usr/local/include/SFML/Graphics/Text.hpp \
   /usr/local/include/SFML/Graphics/VertexBuffer.hpp \
-  /usr/include/c++/11/math.h
+  /usr/include/c++/11/math.h \
+  /home/alejo/Documentos/Programs/PajarosPolarMetric/include/Simulation.h \
+  /usr/include/c++/11/map \
+  /usr/include/c++/11/bits/stl_tree.h \
+  /usr/include/c++/11/bits/stl_map.h \
+  /usr/include/c++/11/bits/stl_multimap.h \
+  /usr/include/c++/11/algorithm \
+  /usr/include/c++/11/bits/stl_algo.h \
+  /usr/include/c++/11/bits/algorithmfwd.h \
+  /usr/include/c++/11/bits/stl_heap.h \
+  /usr/include/c++/11/pstl/glue_algorithm_defs.h \
+  /usr/include/c++/11/functional \
+  /usr/include/c++/11/bits/std_function.h
 
+
+/usr/include/c++/11/bits/stl_algo.h:
+
+/usr/include/c++/11/algorithm:
+
+/usr/include/c++/11/bits/stl_map.h:
+
+/usr/include/c++/11/map:
 
 /usr/include/c++/11/math.h:
 
@@ -430,9 +450,13 @@ CMakeFiles/SwirlBirds.dir/main.cpp.o: /home/alejo/Documentos/Programs/PajarosPol
 
 /usr/local/include/SFML/Graphics/Glsl.hpp:
 
+/home/alejo/Documentos/Programs/PajarosPolarMetric/include/Simulation.h:
+
 /usr/local/include/SFML/Graphics/RenderTexture.hpp:
 
 /usr/local/include/SFML/Graphics/View.hpp:
+
+/usr/include/c++/11/bits/stl_tree.h:
 
 /usr/local/include/SFML/Graphics/RenderStates.hpp:
 
@@ -524,6 +548,8 @@ CMakeFiles/SwirlBirds.dir/main.cpp.o: /home/alejo/Documentos/Programs/PajarosPol
 
 /usr/include/c++/11/bits/stl_raw_storage_iter.h:
 
+/usr/include/c++/11/bits/std_function.h:
+
 /usr/include/c++/11/bits/stl_tempbuf.h:
 
 /usr/local/include/SFML/Graphics/RenderTarget.hpp:
@@ -541,6 +567,12 @@ CMakeFiles/SwirlBirds.dir/main.cpp.o: /home/alejo/Documentos/Programs/PajarosPol
 /usr/local/include/SFML/System/Utf.inl:
 
 /usr/include/c++/11/ext/concurrence.h:
+
+/usr/local/include/SFML/Graphics/Text.hpp:
+
+/usr/local/include/SFML/System/Vector2.hpp:
+
+/usr/include/c++/11/sstream:
 
 /usr/include/c++/11/bits/invoke.h:
 
@@ -568,6 +600,8 @@ CMakeFiles/SwirlBirds.dir/main.cpp.o: /home/alejo/Documentos/Programs/PajarosPol
 
 /usr/local/include/SFML/System/InputStream.hpp:
 
+/usr/local/include/SFML/System/FileInputStream.hpp:
+
 /usr/include/c++/11/tuple:
 
 /usr/local/include/SFML/System/Err.hpp:
@@ -592,17 +626,13 @@ CMakeFiles/SwirlBirds.dir/main.cpp.o: /home/alejo/Documentos/Programs/PajarosPol
 
 /usr/local/include/SFML/Window.hpp:
 
-/usr/local/include/SFML/Graphics/Text.hpp:
-
-/usr/local/include/SFML/System/Vector2.hpp:
-
-/usr/include/c++/11/sstream:
-
 /usr/include/c++/11/bits/fstream.tcc:
 
 /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h:
 
 /usr/include/c++/11/fstream:
+
+/usr/include/c++/11/bits/algorithmfwd.h:
 
 /usr/local/include/SFML/Window/VideoMode.hpp:
 
@@ -708,7 +738,13 @@ CMakeFiles/SwirlBirds.dir/main.cpp.o: /home/alejo/Documentos/Programs/PajarosPol
 
 /usr/include/x86_64-linux-gnu/bits/atomic_wide_counter.h:
 
+/usr/include/c++/11/bits/char_traits.h:
+
+/usr/include/asm-generic/errno-base.h:
+
 /usr/include/x86_64-linux-gnu/bits/cpu-set.h:
+
+/usr/include/c++/11/bits/stl_multimap.h:
 
 /usr/local/include/gsl/gsl_complex.h:
 
@@ -970,16 +1006,6 @@ CMakeFiles/SwirlBirds.dir/main.cpp.o: /home/alejo/Documentos/Programs/PajarosPol
 
 /usr/include/c++/11/bits/range_access.h:
 
-/usr/include/c++/11/bits/char_traits.h:
-
-/usr/include/asm-generic/errno-base.h:
-
-/usr/local/include/SFML/System/FileInputStream.hpp:
-
-/home/alejo/Documentos/Programs/PajarosPolarMetric/include/PVector.h:
-
-/usr/local/include/gsl/gsl_cblas.h:
-
 /usr/include/c++/11/ostream:
 
 /usr/local/include/gsl/gsl_rng.h:
@@ -988,9 +1014,13 @@ CMakeFiles/SwirlBirds.dir/main.cpp.o: /home/alejo/Documentos/Programs/PajarosPol
 
 /usr/include/c++/11/tr1/legendre_function.tcc:
 
+/home/alejo/Documentos/Programs/PajarosPolarMetric/include/Pvector.h:
+
 /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h:
 
 /usr/include/x86_64-linux-gnu/bits/pthread_stack_min-dynamic.h:
+
+/usr/include/c++/11/functional:
 
 /usr/include/linux/errno.h:
 
@@ -1058,6 +1088,8 @@ CMakeFiles/SwirlBirds.dir/main.cpp.o: /home/alejo/Documentos/Programs/PajarosPol
 
 /usr/include/c++/11/cwctype:
 
+/usr/include/c++/11/bits/stl_heap.h:
+
 /usr/include/c++/11/bits/std_abs.h:
 
 /usr/include/c++/11/cstdio:
@@ -1107,6 +1139,8 @@ CMakeFiles/SwirlBirds.dir/main.cpp.o: /home/alejo/Documentos/Programs/PajarosPol
 /usr/include/c++/11/bits/locale_classes.tcc:
 
 /usr/local/include/gsl/gsl_vector_ulong.h:
+
+/usr/include/c++/11/pstl/glue_algorithm_defs.h:
 
 /usr/local/include/SFML/System/Angle.inl:
 
@@ -1239,6 +1273,8 @@ CMakeFiles/SwirlBirds.dir/main.cpp.o: /home/alejo/Documentos/Programs/PajarosPol
 /usr/include/x86_64-linux-gnu/bits/endianness.h:
 
 /usr/local/include/gsl/gsl_matrix.h:
+
+/usr/local/include/gsl/gsl_cblas.h:
 
 /usr/local/include/gsl/gsl_matrix_long_double.h:
 

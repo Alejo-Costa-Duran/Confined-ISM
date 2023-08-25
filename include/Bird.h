@@ -25,9 +25,9 @@ public:
 	double getDistance(Bird vecino, double length);
 	void updateVelocity(double dt, double c1, double c2);
 	void updatePosition(double dt);
-	void calcForce(double maxSpeed, double coupling, std::vector<Bird> &vecinos);
+	void calcForce(double maxSpeed, double coupling, std::vector<Bird> &vecinos, double fieldStrength);
 	void calcMu(double c2, double dt, double maxSpeed);
-	void finalUpdate(double c2, double maxs, double dt, double inertia, double coupling, std::vector<Bird> &vecinos);
+	void finalUpdate(double c2, double maxs, double dt, double inertia, double coupling, std::vector<Bird> &vecinos, double fieldStrength);
 	double getSpin(double inertia, double maxSpeed);
 };
 
