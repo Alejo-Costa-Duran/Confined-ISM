@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Site BuildName="Linux-g++"
+	BuildStamp="20231031-1311-Experimental"
+	Name="alejo-costa"
+	Generator="ctest-3.24.3"
+	CompilerName="/usr/bin/g++"
+	CompilerVersion="11.3.0"
+	OSName="Linux"
+	Hostname="alejo-costa"
+	OSRelease="6.2.0-35-generic"
+	OSVersion="#35~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC Fri Oct  6 10:23:26 UTC 2"
+	OSPlatform="x86_64"
+	Is64Bits="1"
+	VendorString="GenuineIntel"
+	VendorID="Intel Corporation"
+	FamilyID="6"
+	ModelID="158"
+	ProcessorCacheSize="12288"
+	NumberOfLogicalCPU="12"
+	NumberOfPhysicalCPU="6"
+	TotalVirtualMemory="2047"
+	TotalPhysicalMemory="15852"
+	LogicalProcessorsPerPhysical="2"
+	ProcessorClockFrequency="4299.96"
+	>
+	<Testing>
+		<StartDateTime>Oct 31 10:11 -03</StartDateTime>
+		<StartTestTime>1698757885</StartTestTime>
+		<TestList/>
+		<EndDateTime>Oct 31 10:11 -03</EndDateTime>
+		<EndTestTime>1698757885</EndTestTime>
+		<ElapsedMinutes>0</ElapsedMinutes>
+	</Testing>
+</Site>

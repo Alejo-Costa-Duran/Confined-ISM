@@ -1,12 +1,12 @@
 Seed 10
 BoxSize 30000
 TimeStep 0.001
-Inertia 1.0
+Inertia 2.5
 Friction 1.0
 Temperature 1.0
 Interaction 0.0
 NumBirds 100
 Sampling 25
-Field 1.0
-TotalSteps 600000
-Checkpoint 50000
+Field 0.0
+TotalSteps 5000000
+Checkpoint 200000

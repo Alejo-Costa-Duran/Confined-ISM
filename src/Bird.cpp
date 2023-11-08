@@ -66,11 +66,12 @@ void Bird::calcForce(double inertia, double coupling, std::vector<Bird>& vecinos
 {
 	double currentFx = 0;
 	double currentFy = 0;
+	/*
 	for (auto& bird : vecinos)
 	{
 		currentFx += bird.velocity.x;
 		currentFy += bird.velocity.y;
-	}
+	}*/
 	//double rad= position.getNorm();
 	//force.x = currentFx * coupling / inertia-fieldStrength*position.x/(rad*rad*inertia);
 	//force.y = currentFy * coupling / inertia-fieldStrength*position.y/(rad*rad*inertia);

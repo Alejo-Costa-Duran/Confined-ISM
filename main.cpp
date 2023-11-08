@@ -86,15 +86,15 @@ int main(int arg_count, char* args[])
     std::cout << "Con el sufijo: " + run_id<<"\n";
     std::cout << "Los parámetros de la simulación se tomaron del archivo" + data_file<<"\n";
     Simulation s(data_file);
-    int counter = 24;
-    std::vector<double> inertias ={0.6,0.7,0.8,0.9,1.0,1.1,1.2,1.3,1.4,1.5,1.6,1.7,1.8,1.9};
+    int counter = 200;
+    std::vector<double> inertias ={0.0,0.001,0.005,0.01,0.015,0.02,0.05,0.08,0.1,0.25,0.5,0.75,1.0};
     for(auto chi: inertias)
         {
             std::cout << "Amount of runs: " << 1 <<"\n";
             int seed = rand();
-            s.set_par("Inertia",chi);
+            s.set_par("Field",chi);
             s.set_par("Seed",seed);
-            run_id = std::to_string(counter);
+            run_id = "Field"+std::to_string(counter);
             counter +=1;
             auto start = std::chrono::high_resolution_clock::now();
             s.simMosquito(s.parameters, folder, run_id,"/Info.txt");

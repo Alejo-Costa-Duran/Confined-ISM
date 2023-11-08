@@ -234,7 +234,8 @@ void Flock::updateFlock(double dt, double fieldStrength)
         b.velocity.y = (1 + c2 * dt * dt * b.lambda) * b.velocity.y + b.deltaV.y;
 
         // Update forces
-        std::vector<Bird> vec = flocking(b.idx);
+        //std::vector<Bird> vec = flocking(b.idx);
+        std::vector<Bird> vec;
         b.calcForce(inertia, coupling, vec, fieldStrength);
 
 
