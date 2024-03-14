@@ -87,26 +87,30 @@ int main(int arg_count, char* args[])
     std::cout << "Los parámetros de la simulación se tomaron del archivo" + data_file<<"\n";
     Simulation s(data_file);
     int counter = 200;
-    std::vector<double> inertias ={0.0,0.001,0.005,0.01,0.015,0.02,0.05,0.08,0.1,0.25,0.5,0.75,1.0};
+    std::vector<double> inertias ={0.0003,0.005,0.1,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0,1.1,1.2,1.3,1.4,1.5,1.6,1.7,1.8,1.9,2.0,2.1,2.2,2.3,2.4,2.5,2.6,2.7,2.8,2.9,3.0,5,10,15,20,30,50,100};
+    std::vector<double> fields = {0.0,0.001,0.005,0.01,0.015,0.02,0.05,0.08,0.1,0.25,0.5,0.75,1.0,1.05,1.1,1.25,1.5,1.75,2.0};
     for(auto chi: inertias)
-        {
+    {
+        for(auto f: fields)
+        {        
             std::cout << "Amount of runs: " << 1 <<"\n";
             int seed = rand();
-            s.set_par("Field",chi);
+            s.set_par("Inertia",chi);
+            s.set_par("Field",f);
             s.set_par("Seed",seed);
             run_id = "Field"+std::to_string(counter);
             counter +=1;
             auto start = std::chrono::high_resolution_clock::now();
-            s.simMosquito(s.parameters, folder, run_id,"/Info.txt");
+            s.simMosquito(s.parameters, folder, run_id,"/Info");
             auto stop = std::chrono::high_resolution_clock::now();
             auto duration = std::chrono::duration_cast<std::chrono::seconds>(stop - start);
             std::cout << "\n Finished simulation on file id: " + run_id;
             std::cout << "\n It took: " << duration.count() << " seconds \n";
         }
+    }
    }
    else
    {
-    std::cout << "Error: Es necesario proveer el nombre de la carpeta y el sufijo de los archivos \n";
-    return 1;
+    std::cout << "Error: Es necesario proveer el nombre de la carpeta y el sufijo de los archivos \n";    return 1;
    }
 }

@@ -38,14 +38,31 @@ void Simulation::simMosquito(std::map<std::string,double> par, std::string folde
     char *cc =  const_cast<char*>(rngFile.c_str());
     std::string enviroment = folder + "/CheckPoints/env" + run_id + ".csv";
     std::string checkpointFile = folder + "/CheckPoints/checkFile" + run_id + ".csv";
+    bool fileExists = std::ifstream(folder + "/" + fData + ".csv").good();
     std::ofstream fileData;
     fileData.open(folder + "/" + fData + ".csv",ios::app);
+    if(!fileExists)
+    {
+    for(auto key : parameters)
+    {
+        fileData << key.first << ",";
+    }
     for(auto key : parameters)
     {
         fileData << key.second << ",";
     }
     fileData << "\n";
     fileData.close();
+    }
+    else
+    {
+        for(auto key : parameters)
+        {
+            fileData << key.second << ",";
+        }
+        fileData << "\n";
+        fileData.close();
+    }
     int seed = par["Seed"];
     double boxSize = par["BoxSize"];
     double timestep = par["TimeStep"];

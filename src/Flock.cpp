@@ -74,8 +74,7 @@ void Flock::saveFile(char *c,std::string envs, std::string birds,double dt)
 
 void Flock::setConstants(double dt)
 {
-    double etasv0 = friction / (maxSpeed * maxSpeed);
-    double xi = etasv0 / (inertia);
+    double xi = friction / (inertia);
     double xidt = xi * dt;
     this->exi = exp(-xidt);
     if (xidt < 1e-3)
@@ -94,13 +93,13 @@ void Flock::setConstants(double dt)
     }
     siga = (temperature / inertia) * (1 - exi * exi);
     siga = sqrt(siga);
-    if (etasv0 < 1e-3 || xidt <1e-3)
+    if (friction < 1e-3 || xidt <1e-3)
     {
-        sigv = temperature * dt * dt * dt * etasv0 * (2. / 3. - 0.5 * xidt) / (inertia * inertia);
+        sigv = temperature * dt * dt * dt * friction * (2. / 3. - 0.5 * xidt) / (inertia * inertia);
     }
     else
     {
-        sigv = (temperature / etasv0) * (2 * dt - (3 - 4 * exi + exi * exi) / xi);
+        sigv = (temperature / friction) * (2 * dt - (3 - 4 * exi + exi * exi) / xi);
     }
     sigv = sqrt(sigv);
 
@@ -188,7 +187,6 @@ void Flock::updateFlock(double dt, double fieldStrength)
 {
     for (Bird &b : bandada)
     {
-
         if(!b.fixed)
         {
         // Calc  noise
@@ -232,23 +230,27 @@ void Flock::updateFlock(double dt, double fieldStrength)
         // Update v
         b.velocity.x = (1 + c2 * dt * dt * b.lambda) * b.velocity.x + b.deltaV.x;
         b.velocity.y = (1 + c2 * dt * dt * b.lambda) * b.velocity.y + b.deltaV.y;
-
+        }
         // Update forces
         //std::vector<Bird> vec = flocking(b.idx);
-        std::vector<Bird> vec;
-        b.calcForce(inertia, coupling, vec, fieldStrength);
-
+        for(Bird &b : bandada)
+        {
+            std::vector<Bird> vec;
+            b.calcForce(inertia, coupling, vec, fieldStrength);
+        }
 
         // Update a
-        b.acc.x += c2 * dt * (b.force.x);
-        b.acc.y += c2 * dt * (b.force.y);
+        for(Bird &b : bandada)
+        {
+            b.acc.x += c2 * dt * (b.force.x);
+            b.acc.y += c2 * dt * (b.force.y);
 
-        // Calc mu
-        b.mu = -b.velocity.dotProd(b.acc) / (maxSpeed * maxSpeed);
+            // Calc mu
+            b.mu = -b.velocity.dotProd(b.acc) / (maxSpeed * maxSpeed);
 
-        // Final update a
-        b.acc.x += b.velocity.x * b.mu;
-        b.acc.y += b.velocity.y * b.mu;
+            // Final update a
+            b.acc.x += b.velocity.x * b.mu;
+            b.acc.y += b.velocity.y * b.mu;
         }
     }
 }
