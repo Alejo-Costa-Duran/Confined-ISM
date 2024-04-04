@@ -31,6 +31,7 @@ Simulation::Simulation(std::string sim_file)
 
 void Simulation::simMosquito(std::map<std::string,double> par, std::string folder, std::string run_id, std::string fData)
 {
+    //Initialize filess
     std::ofstream filePos(folder + "/Pos" + run_id + ".csv");
     std::ofstream fileVel(folder + "/Vel" + run_id + ".csv");
     std::ofstream fileSpin(folder + "/Spin" + run_id + ".csv");
@@ -38,6 +39,8 @@ void Simulation::simMosquito(std::map<std::string,double> par, std::string folde
     char *cc =  const_cast<char*>(rngFile.c_str());
     std::string enviroment = folder + "/CheckPoints/env" + run_id + ".csv";
     std::string checkpointFile = folder + "/CheckPoints/checkFile" + run_id + ".csv";
+
+    //Record parameters
     bool fileExists = std::ifstream(folder + "/" + fData + ".csv").good();
     std::ofstream fileData;
     fileData.open(folder + "/" + fData + ".csv",ios::app);
@@ -47,6 +50,7 @@ void Simulation::simMosquito(std::map<std::string,double> par, std::string folde
     {
         fileData << key.first << ",";
     }
+    fileData << '\n';
     for(auto key : parameters)
     {
         fileData << key.second << ",";
@@ -63,15 +67,12 @@ void Simulation::simMosquito(std::map<std::string,double> par, std::string folde
         fileData << "\n";
         fileData.close();
     }
-    int seed = par["Seed"];
-    double boxSize = par["BoxSize"];
-    double timestep = par["TimeStep"];
+
+    // Set parameters
+    int seed = par["Seed"], numBirds = par["NumBirds"],sampling = par["Sampling"], totSteps = par["TotalSteps"],checkpoint = par["Checkpoint"]; 
+    double boxSize = par["BoxSize"],timestep = par["TimeStep"];
     double inert = par["Inertia"], fric = par["Friction"], temperature = par["Temperature"], interaccion = par["Interaction"];
-    int numBirds = par["NumBirds"];
     double field = par["Field"];
-    int sampling = par["Sampling"];
-    int totSteps = par["TotalSteps"];
-    int checkpoint = par["Checkpoint"];
     
     Flock fl(seed,boxSize,timestep,1.0,inert,fric,temperature,interaccion,1.0,0.0);
     
@@ -225,7 +226,7 @@ void Simulation::simAnnulus(std::map<std::string,double> par, std::string folder
             double L = fl.bandada[numBirds-1].position.x*fl.bandada[numBirds-1].velocity.y-fl.bandada[numBirds-1].position.y*fl.bandada[numBirds-1].velocity.x;
             fileAng<< std::setprecision(10) << L<<"\n";
             samp = 0;
-            printProgress(progress/totSteps, run_id);
+            //printProgress(progress/totSteps, run_id);
         }
         if(checkFlag == checkpoint)
         {

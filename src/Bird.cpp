@@ -77,7 +77,6 @@ void Bird::calcForce(double inertia, double coupling, std::vector<Bird>& vecinos
 	//force.y = currentFy * coupling / inertia-fieldStrength*position.y/(rad*rad*inertia);
 	force.x = currentFx * coupling / inertia-fieldStrength*position.x/(inertia);
 	force.y = currentFy * coupling / inertia-fieldStrength*position.y/(inertia);
-
 }
 
 void Bird::partialUpdate(double dt, double maxS, double c0, double c1, double c2)

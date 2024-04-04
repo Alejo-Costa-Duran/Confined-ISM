@@ -8,5 +8,5 @@ Interaction 0.0
 NumBirds 100
 Sampling 25
 Field 0.0
-TotalSteps 5000000
-Checkpoint 200000
+TotalSteps 600000
+Checkpoint 100000

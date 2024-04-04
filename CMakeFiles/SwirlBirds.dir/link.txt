@@ -1,0 +1,1 @@
+/usr/bin/c++ -rdynamic CMakeFiles/SwirlBirds.dir/main.cpp.o -o SwirlBirds  -lgsl -lgslcblas -lsfml-window -lsfml-graphics -lsfml-system include/libPvector.a -lgsl -lgslcblas -lsfml-window -lsfml-graphics -lsfml-system 

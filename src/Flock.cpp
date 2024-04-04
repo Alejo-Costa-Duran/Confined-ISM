@@ -231,29 +231,31 @@ void Flock::updateFlock(double dt, double fieldStrength)
         b.velocity.x = (1 + c2 * dt * dt * b.lambda) * b.velocity.x + b.deltaV.x;
         b.velocity.y = (1 + c2 * dt * dt * b.lambda) * b.velocity.y + b.deltaV.y;
         }
+    }
         // Update forces
+    for(Bird &b : bandada)
+    {
         //std::vector<Bird> vec = flocking(b.idx);
-        for(Bird &b : bandada)
-        {
-            std::vector<Bird> vec;
-            b.calcForce(inertia, coupling, vec, fieldStrength);
-        }
+        std::vector<Bird> vec;
+        b.calcForce(inertia, coupling, vec, fieldStrength);
+    }
+        
 
         // Update a
-        for(Bird &b : bandada)
-        {
-            b.acc.x += c2 * dt * (b.force.x);
-            b.acc.y += c2 * dt * (b.force.y);
+    for(Bird &b : bandada)
+    {
+        b.acc.x += c2 * dt * (b.force.x);
+        b.acc.y += c2 * dt * (b.force.y);
 
             // Calc mu
-            b.mu = -b.velocity.dotProd(b.acc) / (maxSpeed * maxSpeed);
+        b.mu = -b.velocity.dotProd(b.acc) / (maxSpeed * maxSpeed);
 
             // Final update a
-            b.acc.x += b.velocity.x * b.mu;
-            b.acc.y += b.velocity.y * b.mu;
-        }
+        b.acc.x += b.velocity.x * b.mu;
+        b.acc.y += b.velocity.y * b.mu;
     }
 }
+
 
 double Flock::totalSpin()
 {

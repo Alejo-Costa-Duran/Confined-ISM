@@ -1,0 +1,2 @@
+/usr/bin/ar qc libPvector.a CMakeFiles/Pvector.dir/__/src/PVector.cpp.o CMakeFiles/Pvector.dir/__/src/Flock.cpp.o CMakeFiles/Pvector.dir/__/src/Bird.cpp.o CMakeFiles/Pvector.dir/__/src/Simulation.cpp.o
+/usr/bin/ranlib libPvector.a
