@@ -4,8 +4,8 @@
 
 
 # Configuration directories and files
-SourceDirectory: /home/alejo/Documentos/Programs/PajarosPolarMetric
-BuildDirectory: /home/alejo/Documentos/Programs/PajarosPolarMetric/build
+SourceDirectory: /home/alejo/Documents/Programs/Pajaros/Mosquito/PajarosPolarMetric
+BuildDirectory: /home/alejo/Documents/Programs/Pajaros/Mosquito/PajarosPolarMetric/build
 
 # Where to place the cost data store
 CostDataFile: 
@@ -27,7 +27,7 @@ SubmitInactivityTimeout:
 NightlyStartTime: 00:00:00 EDT
 
 # Commands for the build/test/submit cycle
-ConfigureCommand: "/usr/local/bin/cmake" "/home/alejo/Documentos/Programs/PajarosPolarMetric"
+ConfigureCommand: "/usr/local/bin/cmake" "/home/alejo/Documents/Programs/Pajaros/Mosquito/PajarosPolarMetric"
 MakeCommand: /usr/local/bin/cmake --build . --config "${CTEST_CONFIGURATION_TYPE}"
 DefaultCTestConfigurationType: Release
 
@@ -64,7 +64,7 @@ UpdateType: git
 
 # Compiler info
 Compiler: /usr/bin/g++
-CompilerVersion: 11.3.0
+CompilerVersion: 11.4.0
 
 # Dynamic analysis (MemCheck)
 PurifyCommand: 

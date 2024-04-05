@@ -1,11 +1,9 @@
 # ninja log v5
-3	581	1696875582303875599	include/CMakeFiles/Pvector.dir/__/src/PVector.cpp.o	5cabf7641aebe4d4
-1	493	1698758564876620367	include/CMakeFiles/Pvector.dir/__/src/Bird.cpp.o	b137531caad134c6
-3	2071	1696876594352374161	include/CMakeFiles/Pvector.dir/__/src/Simulation.cpp.o	c620b774ef6cfb96
-0	68	1700831215239032189	build.ninja	6f6162eb5b6b8139
-1	848	1698758565232635016	include/CMakeFiles/Pvector.dir/__/src/Flock.cpp.o	a2bb87346b58723
-1	1202	1698759955130669991	CMakeFiles/SwirlBirds.dir/main.cpp.o	254edbfa39addd03
-2	1111	1686662213212531012	include/CMakeFiles/Pvector.dir/__/src/manager.cpp.o	813d5239eea9b5e1
-848	862	1698758565248635675	include/libPvector.a	c04e5fed8b2409bc
-1202	1304	1698759955230672009	SwirlBirds	c68ae732877c901c
-0	3	0	clean	a31eedcededa8236
+0	5	0	clean	a31eedcededa8236
+0	501	1712347045045485268	include/CMakeFiles/Pvector.dir/__/src/PVector.cpp.o	2ab3eb2fae84e148
+1	859	1712347045405497984	include/CMakeFiles/Pvector.dir/__/src/Bird.cpp.o	d860e3bbb9a9ea1a
+1	1054	1712347045601504908	include/CMakeFiles/Pvector.dir/__/src/Flock.cpp.o	6d3164647a85a1a7
+0	1421	1712347045969517908	CMakeFiles/SwirlBirds.dir/main.cpp.o	647925d47d6fa8b2
+1	1949	1712347046497536558	include/CMakeFiles/Pvector.dir/__/src/Simulation.cpp.o	449368bc5342f2a6
+1950	1970	1712347046517537265	include/libPvector.a	c04e5fed8b2409bc
+1970	2099	1712347046645541787	SwirlBirds	8221743256172241

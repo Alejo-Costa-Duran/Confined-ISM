@@ -1,27 +1,27 @@
 [
 {
-  "directory": "/home/alejo/Documentos/Programs/PajarosPolarMetric/build",
-  "command": "/usr/bin/g++ -I/home/alejo/Documentos/Programs/PajarosPolarMetric/include -O3 -DNDEBUG -o CMakeFiles/SwirlBirds.dir/main.cpp.o -c /home/alejo/Documentos/Programs/PajarosPolarMetric/main.cpp",
-  "file": "/home/alejo/Documentos/Programs/PajarosPolarMetric/main.cpp"
+  "directory": "/home/alejo/Documents/Programs/Pajaros/Mosquito/PajarosPolarMetric/build",
+  "command": "/usr/bin/g++ -I/home/alejo/Documents/Programs/Pajaros/Mosquito/PajarosPolarMetric/include -g -o CMakeFiles/SwirlBirds.dir/main.cpp.o -c /home/alejo/Documents/Programs/Pajaros/Mosquito/PajarosPolarMetric/main.cpp",
+  "file": "/home/alejo/Documents/Programs/Pajaros/Mosquito/PajarosPolarMetric/main.cpp"
 },
 {
-  "directory": "/home/alejo/Documentos/Programs/PajarosPolarMetric/build",
-  "command": "/usr/bin/g++ -I/home/alejo/Documentos/Programs/PajarosPolarMetric/include -O3 -DNDEBUG -o include/CMakeFiles/Pvector.dir/__/src/PVector.cpp.o -c /home/alejo/Documentos/Programs/PajarosPolarMetric/src/PVector.cpp",
-  "file": "/home/alejo/Documentos/Programs/PajarosPolarMetric/src/PVector.cpp"
+  "directory": "/home/alejo/Documents/Programs/Pajaros/Mosquito/PajarosPolarMetric/build",
+  "command": "/usr/bin/g++ -I/home/alejo/Documents/Programs/Pajaros/Mosquito/PajarosPolarMetric/include -g -o include/CMakeFiles/Pvector.dir/__/src/PVector.cpp.o -c /home/alejo/Documents/Programs/Pajaros/Mosquito/PajarosPolarMetric/src/PVector.cpp",
+  "file": "/home/alejo/Documents/Programs/Pajaros/Mosquito/PajarosPolarMetric/src/PVector.cpp"
 },
 {
-  "directory": "/home/alejo/Documentos/Programs/PajarosPolarMetric/build",
-  "command": "/usr/bin/g++ -I/home/alejo/Documentos/Programs/PajarosPolarMetric/include -O3 -DNDEBUG -o include/CMakeFiles/Pvector.dir/__/src/Flock.cpp.o -c /home/alejo/Documentos/Programs/PajarosPolarMetric/src/Flock.cpp",
-  "file": "/home/alejo/Documentos/Programs/PajarosPolarMetric/src/Flock.cpp"
+  "directory": "/home/alejo/Documents/Programs/Pajaros/Mosquito/PajarosPolarMetric/build",
+  "command": "/usr/bin/g++ -I/home/alejo/Documents/Programs/Pajaros/Mosquito/PajarosPolarMetric/include -g -o include/CMakeFiles/Pvector.dir/__/src/Flock.cpp.o -c /home/alejo/Documents/Programs/Pajaros/Mosquito/PajarosPolarMetric/src/Flock.cpp",
+  "file": "/home/alejo/Documents/Programs/Pajaros/Mosquito/PajarosPolarMetric/src/Flock.cpp"
 },
 {
-  "directory": "/home/alejo/Documentos/Programs/PajarosPolarMetric/build",
-  "command": "/usr/bin/g++ -I/home/alejo/Documentos/Programs/PajarosPolarMetric/include -O3 -DNDEBUG -o include/CMakeFiles/Pvector.dir/__/src/Bird.cpp.o -c /home/alejo/Documentos/Programs/PajarosPolarMetric/src/Bird.cpp",
-  "file": "/home/alejo/Documentos/Programs/PajarosPolarMetric/src/Bird.cpp"
+  "directory": "/home/alejo/Documents/Programs/Pajaros/Mosquito/PajarosPolarMetric/build",
+  "command": "/usr/bin/g++ -I/home/alejo/Documents/Programs/Pajaros/Mosquito/PajarosPolarMetric/include -g -o include/CMakeFiles/Pvector.dir/__/src/Bird.cpp.o -c /home/alejo/Documents/Programs/Pajaros/Mosquito/PajarosPolarMetric/src/Bird.cpp",
+  "file": "/home/alejo/Documents/Programs/Pajaros/Mosquito/PajarosPolarMetric/src/Bird.cpp"
 },
 {
-  "directory": "/home/alejo/Documentos/Programs/PajarosPolarMetric/build",
-  "command": "/usr/bin/g++ -I/home/alejo/Documentos/Programs/PajarosPolarMetric/include -O3 -DNDEBUG -o include/CMakeFiles/Pvector.dir/__/src/Simulation.cpp.o -c /home/alejo/Documentos/Programs/PajarosPolarMetric/src/Simulation.cpp",
-  "file": "/home/alejo/Documentos/Programs/PajarosPolarMetric/src/Simulation.cpp"
+  "directory": "/home/alejo/Documents/Programs/Pajaros/Mosquito/PajarosPolarMetric/build",
+  "command": "/usr/bin/g++ -I/home/alejo/Documents/Programs/Pajaros/Mosquito/PajarosPolarMetric/include -g -o include/CMakeFiles/Pvector.dir/__/src/Simulation.cpp.o -c /home/alejo/Documents/Programs/Pajaros/Mosquito/PajarosPolarMetric/src/Simulation.cpp",
+  "file": "/home/alejo/Documents/Programs/Pajaros/Mosquito/PajarosPolarMetric/src/Simulation.cpp"
 }
 ]
